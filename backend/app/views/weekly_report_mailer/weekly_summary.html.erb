@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Job Summary - Fiortech Group</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #408663;
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 22px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .line {
+        width: 100%;
+        height: 1px;
+        background: lightgrey;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .job-category {
+      margin-top: 30px;
+    }
+
+    .job-category h3 {
+      font-size: 18px;
+      color: #408663;
+    }
+
+    .job-details {
+      margin-left: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 30px;
+    }
+
+    .footer a {
+      color: #408663;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Weekly Job Summary</h1>
+    <p><strong>Total Permanent Jobs</strong>: <%= @permanent_jobs.size %></p>
+    <p><strong>Total Contract Jobs</strong>: <%= @contract_jobs.size %></p>
+    <p><strong>Total Jobs</strong>: <%= @jobs.size %></p>
+
+
+    <div class='line'></div>
+
+    <!-- Permanent Jobs Section -->
+    <div class="job-category">
+      <h3>Permanent Jobs</h3>
+      <% @permanent_jobs.each do |job| %>
+        <div class="job-details">
+          <p><strong>Job Title:</strong> <%= job.job_title %></p>
+          <p><strong>Salary:</strong> <%= number_to_currency(job.lower_salary, unit: '£', precision: 2, delimiter: ',') %> - <%= number_to_currency(job.higher_salary, unit: '£', precision: 2, delimiter: ',') %></p>
+          <p><strong>Applicants:</strong> <%= job.applicants.size %></p>
+          <div class="line"></div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Contract Jobs Section -->
+    <div class="job-category">
+      <h3>Contract Jobs</h3>
+      <% @contract_jobs.each do |job| %>
+        <div class="job-details">
+          <p><strong>Job Title:</strong> <%= job.job_title %></p>
+          <p><strong>Rate:</strong> £<%= job.lower_rate %> - £<%= job.higher_rate %> per day</p>
+          <p><strong>Applicants:</strong> <%= job.applicants.size %></p>
+          <div class="line"></div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="footer">
+      <p>Fiortech Recruitment Group | <a href="http://www.fiortechgroup.com">www.fiortechgroup.com</a></p>
+    </div>
+  </div>
+
+</body>
+</html>

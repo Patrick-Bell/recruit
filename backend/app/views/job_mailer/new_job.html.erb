@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Job Submitted - Fiortech Group</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #408663;
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 22px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-align: center
+    }
+
+    p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .job-details p {
+      color: #444;
+    }
+
+    .job-details strong {
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #408663;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #356c4e;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 30px;
+    }
+
+    .footer a {
+      color: #408663;
+      text-decoration: none;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+
+    .line {
+        width: 100%;
+        height: 1px;
+        background: lightgrey;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>New Job Submitted!</h1>
+
+    <h2>Position: <%= @job.job_title %></h2>
+
+    <div class="job-details">
+      <p><strong>Job Type:</strong> <%= @job.job_type.present? ? @job.job_type : "Not specified" %></p>
+      <p><strong>Location:</strong> <%= @job.job_location.present? ? @job.job_location : "Not specified" %></p>
+      <p><strong>Hybrid Working:</strong> <%= @job.job_hybrid.present? ? @job.job_hybrid : "Not specified" %></p>
+
+      <div class="line"></div>
+
+      <% if @job.job_type == "permanent" %>
+        <p><strong>Salary:</strong> <%= number_to_currency(@job.lower_salary, unit:'£', precision:2, delimiter:',') %> - <%= number_to_currency(@job.higher_salary, unit:'£', precision:2, delimiter:',') %></p>
+      <% elsif @job.job_type == "contract" %>
+        <p><strong>Rate:</strong> £<%= @job.lower_rate %> - £<%= @job.higher_rate %> per hour</p>
+        <p><strong>Contract Determination:</strong> <%= @job.contract_determine %> IR35</p>
+        <p><strong>Rate:</strong> <%= @job.contract_length %> month(s)</p>
+      <% else %>
+        <p><strong>Salary/Rate:</strong> Not specified</p>
+      <% end %>
+
+      <div class="line"></div>
+
+      <% if @job.job_desc.present? && @job.job_desc.any? %>
+        <p><strong>Job Description:</strong></p>
+        <ul>
+          <% @job.job_desc.each do |desc| %>
+            <p><%= desc %></p>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No job description available.</p>
+      <% end %>
+
+     <div class="line"></div>
+
+      <% if @job.job_skills.present? && @job.job_skills.any? %>
+        <p><strong>Skills:</strong></p>
+        <ul>
+          <% @job.job_skills.each do |skill| %>
+            <p><%= skill %></p>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No job skills available.</p>
+      <% end %>
+
+    <div class="line"></div>
+
+    <% if @job.job_benefits.present? && @job.job_benefits.any? %>
+    <p><strong>Benefits:</strong></p>
+    <ul>
+      <% @job.job_benefits.each do |benefit| %>
+        <p><%= benefit %></p>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No job benefits available.</p>
+  <% end %>
+
+    <div class="line"></div>
+
+    </div>
+
+    <p>To <strong>view</strong> this position, please click <a href="http://www.fiortechgroup.com/jobs/<%= @job.id %>">here</a> </p>
+
+    <p>To <strong>edit</strong> this position, please click <a href="http://www.fiortechgroup.com/dashboard">here</a> </p>
+
+
+    <div class="footer">
+      <p>Fiortech Recruitment Group | <a href="http://www.fiortechgroup.com">www.fiortechgroup.com</a></p>
+    </div>
+  </div>
+
+</body>
+</html>

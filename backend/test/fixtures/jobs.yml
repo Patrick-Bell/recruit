@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_title: MyString
+  job_type: MyString
+  lower_salary: 1
+  higher_salary: 1
+  lower_rate: 1
+  higher_rate: 1
+  contract_determine: MyString
+  job_location: MyString
+  job_hybrid: MyString
+  job_desc: MyString
+  job_skills: MyText
+  job_benefits: MyText
+  tag: false
+  job_posted: 2024-12-23
+  job_close: 2024-12-23
+  active: false
+
+two:
+  job_title: MyString
+  job_type: MyString
+  lower_salary: 1
+  higher_salary: 1
+  lower_rate: 1
+  higher_rate: 1
+  contract_determine: MyString
+  job_location: MyString
+  job_hybrid: MyString
+  job_desc: MyString
+  job_skills: MyText
+  job_benefits: MyText
+  tag: false
+  job_posted: 2024-12-23
+  job_close: 2024-12-23
+  active: false
