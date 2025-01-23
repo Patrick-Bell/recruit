@@ -14,4 +14,15 @@
       methods: [:get, :post, :put, :patch, :delete, :options, :head],
       credentials: true
    end
+
+   allow do
+    origins 'https://recruit-xicp.onrender.com'  # For production frontend
+
+    resource "*",
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      credentials: true
+  end
+
+
  end
