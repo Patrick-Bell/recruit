@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get "home/index"
+
   # Scope the Devise routes under /api
   scope 'api' do
 
@@ -23,4 +26,7 @@ Rails.application.routes.draw do
 
     # Endpoint to get current_user (show user info)
   end
+
+  get '*path', to: 'home#index', constraints: ->(req) { !req.xhr? && req.format.html? }
+
 end
