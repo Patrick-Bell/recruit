@@ -58,6 +58,7 @@ const EditJob = ({ job, onBack, handleSubmit, setActiveTab }) => {
   const submitEdit = (e) => {
     e.preventDefault(); 
     handleSubmit(e, formData); // Now formData is explicitly passed
+    toast.success('Success')
   };
   
   
