@@ -101,6 +101,7 @@ const About = () => {
 
 
 
+
       {/* Core Values */}
       <Box id='values' sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" }}>
         <Underline>
@@ -162,9 +163,18 @@ const About = () => {
 
       <Box id='process' sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "white" }}>
   <Underline>
-    <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block" }}>
-      Our Recruitment Process
-    </Typography>
+  <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 700,
+              fontFamily: "Poppins",
+              width: 'auto', // Ensure width adjusts based on the text content
+              display: 'inline-block', // Ensures the text stays on the same line
+              fontSize: { xs: '1.5rem', sm: '2rem' }, // Responsive font sizes
+            }}
+          >
+            Our Recruitment Process
+          </Typography>
   </Underline>
   <Typography sx={{ fontFamily: "Poppins", marginTop: 2, }}>
     We specialize in delivering tailored recruitment solutions. Our process is designed to identify and secure the most qualified talent for your specific needs. We prioritize efficiency without compromising on quality, ensuring that both our clients and candidates have a seamless experience.
@@ -215,9 +225,18 @@ const About = () => {
 
 <Box id='solutions' sx={{ padding: { xs: 3, sm: 5 },  backgroundColor: "#f9f9f9" }}>
 <Underline>
-    <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block" }}>
-      Our Solutions
-    </Typography>
+<Typography
+            variant="h4"
+            sx={{
+              fontWeight: 700,
+              fontFamily: "Poppins",
+              width: 'auto', // Ensure width adjusts based on the text content
+              display: 'inline-block', // Ensures the text stays on the same line
+              fontSize: { xs: '1.5rem', sm: '2rem' }, // Responsive font sizes
+            }}
+          >
+            Our Solutions
+          </Typography>
   </Underline>
       <Typography sx={{ marginTop: 2, fontFamily: "Poppins", color: "#333"}}>
         We offer tailored recruitment services for both permanent and contract roles to meet your business needs. Whether you're looking for long-term professionals or short-term talent for specific projects, we have you covered!

@@ -113,10 +113,10 @@ const PermanentRecruit = () => {
         </Typography>
 
         {/* Benefits Grid */}
-        <Grid container spacing={4} justifyContent="center" backgroundColor='#408663' width='100%' margin='auto auto'>
+        <Grid container spacing={0} justifyContent="center" backgroundColor='#408663' width='100%' margin='auto auto' padding={'10px'}>
     {whatToExpect.map((item, index) => (
       <Grid item xs={12} sm={6} md={3} key={index}>
-        <Box sx={{ textAlign: 'center', backgroundColor: '#408663', padding: '20px', borderRadius: '10px' }}>
+        <Box sx={{ textAlign: 'center', backgroundColor: '#408663', padding: '20px', borderRadius: '10px', alignItems:'center' }}>
           <IconButton sx={{ backgroundColor: 'white', color: '#408663', padding: '20px', borderRadius: '50%', "&:hover": { backgroundColor: 'white' } }}>
             {item.icon}
           </IconButton>

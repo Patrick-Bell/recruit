@@ -113,7 +113,7 @@ const ContractRecruit = () => {
         Hiring contract talent presents unique challenges, including tight deadlines, fluctuating workloads, and the need for specialized skills on short notice. Managing short-term hires efficiently while ensuring quality and compliance can be complex. By partnering with us, you will achieve...</Typography>
 
         {/* Benefits Grid */}
-        <Grid container spacing={4} justifyContent="center" backgroundColor='#408663' width='100%' margin='auto auto'>
+        <Grid container spacing={0} justifyContent="center" backgroundColor='#408663' width='100%' margin='auto auto'>
     {contractExpect.map((item, index) => (
       <Grid item xs={12} sm={6} md={3} key={index}>
         <Box sx={{ textAlign: 'center', backgroundColor: '#408663', padding: '20px', borderRadius: '10px' }}>
