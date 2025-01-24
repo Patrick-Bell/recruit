@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'home#index'  # This ensures the root path "/" is handled
 
   get "home/index"
 
