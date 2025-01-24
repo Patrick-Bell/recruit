@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root "home#index"  # Set the root path to home#index
+
+
   get "home/index"
 
   # Scope the Devise routes under /api
