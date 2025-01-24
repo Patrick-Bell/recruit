@@ -16,6 +16,7 @@ import JobConfirmation from '../pages/Job/JobConfirmation';
 import About from '../pages/Home/About';
 import ContractRecruit from '../pages/Contract/ContractRecruit';
 import ScrollProgress from '../pages/Home/ScrollProgress';
+import ContactUs from '../pages/Contact/Contact';
 
 
 const AppContent = () => {
@@ -81,6 +82,7 @@ const AppContent = () => {
         <Route path='/session-expired' element={<SessionExpired/>}></Route>
         <Route path='*' element={<NotFound />}></Route>
         <Route path='/job-confirmation' element={<JobConfirmation />}></Route>
+        <Route path='/contact' element={<ContactUs />}></Route>
 
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>        
     

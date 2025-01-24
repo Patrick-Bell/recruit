@@ -1,78 +1,115 @@
 import React from "react";
-import { Container, TextField, Button, Typography, Grid, Paper, Link } from "@mui/material";
+import { Container, TextField, Button, Typography, Grid, Paper, Box, Link } from "@mui/material";
 import { Email, Phone, LocationOn } from "@mui/icons-material";
+import Contact from "../Home/Contact";
+import ScrollInView from "../../animation/ScrollInView";
+import Logo from '../../images/questions.jpg';
+import Footer from "../Home/Footer";
 
 const ContactUs = () => {
   return (
-    <Container maxWidth="md" sx={{ mt: 5 }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        Contact Us
-      </Typography>
-      <Typography variant="body1" align="center" gutterBottom>
-        Have questions? We'd love to hear from you!
-      </Typography>
+    <>
+      <Box sx={{ position: 'relative' }}>
+        {/* Hero Section */}
+        <Box
+          sx={{
+            height: '40vh',
+            backgroundImage: `url(${Logo})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: 'white',
+            textAlign: 'center',
+            padding: '0 20px',
+          }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: 'rgba(0, 0, 0, 0.6)',
+              zIndex: 1,
+            }}
+          />
+          <Box sx={{ zIndex: 2 }}>
+            <ScrollInView direction="bottom">
+              <Typography
+                variant="h2"
+                sx={{
+                  fontWeight: 'bold',
+                  fontFamily: 'Poppins',
+                  marginBottom: '20px',
+                  fontSize: { xs: '2rem', sm: '3rem', md: '4rem' },
+                }}
+              >
+                Contact Us
+              </Typography>
+            </ScrollInView>
+            <ScrollInView direction="bottom">
+              <Typography
+                variant="h5"
+                sx={{
+                  fontWeight: 400,
+                  fontFamily: 'Poppins',
+                  marginBottom: '30px',
+                  fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.75rem' },
+                }}
+              >
+                Have questions? We’d love to hear from you!
+              </Typography>
+            </ScrollInView>
+          </Box>
+        </Box>
+      </Box>
 
-      <Grid container spacing={4} sx={{ mt: 3 }}>
-        {/* Contact Form */}
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 3 }}>
-            <Typography variant="h6" gutterBottom>
-              Send us a message
+      <Container sx={{ mt: 5, mb:5 }}>
+        <Grid container spacing={4}>
+          {/* Contact Form */}
+          <Grid item xs={12} md={6}>
+              <Contact /> {/* Your contact form */}
+          </Grid>
+
+          {/* Contact Information */}
+          <Grid item xs={12} md={6}>
+          <Typography
+                variant="h6"
+                sx={{ fontWeight: 600, fontFamily: "Poppins", marginBottom: "5px" }}
+            >
+                Contact Details
             </Typography>
-            <form>
-              <TextField fullWidth label="Your Name" variant="outlined" margin="normal" required />
-              <TextField fullWidth label="Email Address" type="email" variant="outlined" margin="normal" required />
-              <TextField fullWidth label="Subject" variant="outlined" margin="normal" />
-              <TextField fullWidth label="Message" multiline rows={4} variant="outlined" margin="normal" required />
-              <Button variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
-                Send Message
-              </Button>
-            </form>
-          </Paper>
+              <Typography variant="body1" sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                <LocationOn sx={{ mr: 1 }} /> UK, London
+              </Typography>
+              <Typography variant="body1" sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+                <Phone sx={{ mr: 1 }} /> 07826 117721
+              </Typography>
+              <Typography variant="body1" sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                <Email sx={{ mr: 1 }} /> A.OCallaghan@fiortechgroup.com
+              </Typography>
+
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 600, fontFamily: "Poppins", marginBottom: "5px", marginTop:'20px' }}
+            >
+                Follow Us
+            </Typography>
+              <Box>
+                <Link href="#" sx={{ mr: 2 }}>Facebook</Link>
+                <Link href="#" sx={{ mr: 2 }}>Twitter</Link>
+                <Link href="#">LinkedIn</Link>
+              </Box>
+          </Grid>
         </Grid>
+      </Container>
 
-        {/* Contact Information */}
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 3 }}>
-            <Typography variant="h6" gutterBottom>
-              Contact Details
-            </Typography>
-            <Typography variant="body1" sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-              <LocationOn sx={{ mr: 1 }} /> 123 Main Street, City, Country
-            </Typography>
-            <Typography variant="body1" sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-              <Phone sx={{ mr: 1 }} /> +1 (123) 456-7890
-            </Typography>
-            <Typography variant="body1" sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-              <Email sx={{ mr: 1 }} /> contact@example.com
-            </Typography>
-
-            {/* Social Links */}
-            <Typography variant="h6" gutterBottom>
-              Follow Us
-            </Typography>
-            <Link href="#" sx={{ mr: 2 }}>Facebook</Link>
-            <Link href="#" sx={{ mr: 2 }}>Twitter</Link>
-            <Link href="#">LinkedIn</Link>
-          </Paper>
-        </Grid>
-      </Grid>
-
-      {/* Google Maps Embed (Optional) */}
-      <Paper elevation={3} sx={{ mt: 4, p: 2 }}>
-        <Typography variant="h6" gutterBottom>
-          Our Location
-        </Typography>
-        <iframe
-          title="Google Maps"
-          width="100%"
-          height="300"
-          style={{ border: 0 }}
-          src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=New+York"
-          allowFullScreen
-        />
-      </Paper>
-    </Container>
+      <Footer />
+    </>
   );
 };
 
