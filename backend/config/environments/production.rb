@@ -85,9 +85,10 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.public_file_server.enabled = true
-  config.assets.compile = false
-  config.assets.digest = true
+  config.assets.enabled = true
+  config.public_file_server.index_name = 'index.html' # Optional, depending on your setup
+
+
 
 
 

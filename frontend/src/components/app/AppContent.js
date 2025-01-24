@@ -36,6 +36,8 @@ const AppContent = () => {
         return { title: 'About | Fiortech Recruitment Group' }
       case '/jobs':
         return { title: 'Jobs | Fiortech Recruitment Group' };
+      case '/contact':
+        return { title: 'Contact Us | Fiortech Recruitment Group' }
       case '/permanent-recruitment':
         return { title: 'Permanent Recruitment | Fiortech Recruitment Group' };
       case '/contract-recruitment':
