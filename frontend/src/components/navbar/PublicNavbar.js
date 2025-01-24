@@ -117,7 +117,7 @@ const PublicNavbar = () => {
       >
         {/* Logo */}
         <Box sx={{}}>
-          <Typography fontFamily={'Poppins'} fontWeight={800}>
+          <Typography component={'a'} href='/' fontFamily={'Poppins'} fontWeight={800} sx={{textDecoration:'none', color:'black'}}>
             Fiortech
           </Typography>
         </Box>

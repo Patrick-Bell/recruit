@@ -138,12 +138,7 @@ const AllJobs = ({  }) => {
         </>
       ):(
         <>
-        <Paper elevation={3} sx={{p: 2, mb:2}}>
-          <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-          <Typography fontWeight={800} fontFamily={'Poppins'}>Job Page</Typography>
-          </Box>
-        </Paper>
-      
+        
       <Grid container spacing={3}>
         {/* Left Section for Table */}
         <Grid item xs={12} md={8}>

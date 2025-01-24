@@ -169,23 +169,6 @@ const Kanban = ({ job, applicants, setApplicants }) => {
 
                   <Divider sx={{ mb: 1 }} />
 
-                  <CardContent sx={{ display: "flex", flexDirection: "column", gap: 0.8 }}>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
-                      <LocationOnIcon color="disabled" sx={{ fontSize: 16 }} />
-                      <Typography variant="body2" color="textSecondary" sx={{ fontSize: "0.9rem" }}>
-                        {applicant.location}
-                      </Typography>
-                    </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 0.8 }}>
-                      <EventAvailableIcon color="success" sx={{ fontSize: 16 }} />
-                      <Typography variant="body2" color="textSecondary" sx={{ fontSize: "0.9rem" }}>
-                        {applicant.availability}
-                      </Typography>
-                    </Box>
-                  </CardContent>
-
-                  <Divider sx={{ mb: 1 }} />
-
                   <CardContent sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
                     <Tooltip title="View Candidate">
                       <IconButton size="small" onClick={() => handleViewCandidate(applicant)}>
@@ -319,6 +302,9 @@ const Kanban = ({ job, applicants, setApplicants }) => {
         <MuiLink href={selectedApplicant.profile} target="_blank">
           LinkedIn
         </MuiLink>
+      </Typography>
+      <Typography variant="body1" color="textSecondary">
+        <strong>Applied:</strong> {new Date(selectedApplicant.created_at).toLocaleString('en-GB')}
       </Typography>
 
       {selectedApplicant.cover_letter && (

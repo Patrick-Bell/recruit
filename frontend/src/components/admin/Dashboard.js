@@ -87,7 +87,7 @@ const Dashboard = () => {
                 backgroundColor: "rgba(64, 134, 99, 0.1)",
                 cursor: "pointer",
               },
-              transition: "background-color 0.3s ease",
+              transition: "background-color 0.3s ease, border-left 0.3s ease",
               padding: "12px 15px",
               borderRadius: "5px",
               marginBottom: "5px",
