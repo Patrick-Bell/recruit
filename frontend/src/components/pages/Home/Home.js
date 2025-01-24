@@ -63,6 +63,7 @@ const Home = () => {
           </ScrollInView>
           <ScrollInView direction={'left'}>
           <Button
+            href="/about"
             variant="contained"
             sx={{
               marginTop: "20px",

@@ -279,7 +279,7 @@ const PublicNavbar = () => {
             )}
           </Box>
 
-          <Button variant="outlined">
+          <Button onClick={() => handleNavigation('/#contact')} variant="outlined">
             Contact
           </Button>
         </Box>
@@ -373,7 +373,7 @@ const PublicNavbar = () => {
         fontWeight: 500,
         ':hover': { color: '#408663' },
       }}
-      onClick={handleMenuClose}
+      onClick={() => {handleNavigation('/#contact')}}
     >
       Contact
     </Button>

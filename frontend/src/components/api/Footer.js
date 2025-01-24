@@ -12,7 +12,7 @@ export const quickLinks = [
 
 export const informationLinks = [
     { name: "Upload CV", link: '/upload-cv' },
-    { name: "Contact Us", link: '/contact' },
+    { name: "Contact Us", link: '/#contact' },
 ]
 
 export const solutionLinks = [

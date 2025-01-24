@@ -81,6 +81,7 @@ const Contact = () => {
   };
 
   return (
+    <Box id='contact'>
     <ScrollInView direction={'left'}>
       <Toaster />
     <Box>
@@ -153,6 +154,7 @@ const Contact = () => {
       </form>
     </Box>
     </ScrollInView>
+    </Box>
   );
 };
 
