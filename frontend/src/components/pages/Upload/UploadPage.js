@@ -25,7 +25,7 @@ const UploadPage = () => {
       {/* Main Section Container with Flexbox */}
       <Box 
         sx={{
-          height: '60vh', // Height adjusted for better proportions
+          height: '45vh', // Height adjusted for better proportions
           display: changePictureOrientation ? 'block' : 'flex',
           justifyContent: 'space-between', // Space between text and image
           alignItems: 'center', // Vertically centers content
