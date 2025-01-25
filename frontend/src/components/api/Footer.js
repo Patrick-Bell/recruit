@@ -2,6 +2,7 @@ export const quickLinks = [
     { name: "About Us", link: '/#about-us' },
     { name: "Specialisms", link: '/#specialisms' },
     { name: "Latest Roles", link: '/#latest-roles' },
+    { name: "All Jobs", link: '/jobs' },
     { name: "Mission | Vision", link: '/about#mission' },
     { name: "Core Values", link: '/about#values' },
     { name: "Process", link: '/about#process' },
@@ -12,7 +13,7 @@ export const quickLinks = [
 
 export const informationLinks = [
     { name: "Upload CV", link: '/upload-cv' },
-    { name: "Contact Us", link: '/#contact' },
+    { name: "Contact Us", link: '/contact' },
 ]
 
 export const solutionLinks = [

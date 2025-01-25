@@ -159,7 +159,6 @@ const JobPage = () => {
     };
 
 
-
   return (
     <>
       <Box
@@ -206,7 +205,7 @@ const JobPage = () => {
               }}
             >
               If you are searching for a permanent or contract job in technology, search our latest UK jobs below. If you can’t find a job that matches your needs,{" "}
-              <span style={{ color: "#408663", fontWeight: 800, cursor: "pointer" }}>register your details</span> and we
+              <span onClick={() => navigate("/upload-cv")} style={{ color: "#408663", fontWeight: 800, cursor: "pointer" }}>register your details</span> and we
               will review your CV and look to match your skills and experience with new jobs when they become available.
             </Typography>
           </ScrollInView>

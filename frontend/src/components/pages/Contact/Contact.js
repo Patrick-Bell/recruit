@@ -100,9 +100,7 @@ const ContactUs = () => {
                 Follow Us
             </Typography>
               <Box>
-                <Link href="#" sx={{ mr: 2 }}>Facebook</Link>
-                <Link href="#" sx={{ mr: 2 }}>Twitter</Link>
-                <Link href="#">LinkedIn</Link>
+                <Link href="https://www.linkedin.com/company/fiortechrecruitmentgroup/" target='_blank'>LinkedIn</Link>
               </Box>
           </Grid>
         </Grid>

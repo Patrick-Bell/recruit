@@ -42,6 +42,7 @@ const Login = () => {
             alignItems: 'center',
             borderRadius: '10px',
             backgroundColor: 'white',
+            margin:"20px"
           }}
         >
           {/* Logo */}

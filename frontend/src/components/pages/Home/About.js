@@ -408,7 +408,7 @@ const About = () => {
     </Typography>
 
     {/* LinkedIn Icon */}
-    <Box sx={{ mt: 2 }} component={"a"} target="_blank" href="https://www.linkedin.com">
+    <Box sx={{ mt: 2 }} component={"a"} target="_blank" href="https://www.linkedin.com/in/aaron-o-callaghan/">
       <LinkedInIcon
         fontSize="large"
         sx={{

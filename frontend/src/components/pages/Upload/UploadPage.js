@@ -1,13 +1,10 @@
 import { Box, Typography, Grid, IconButton, Divider, useMediaQuery } from "@mui/material";
-import { motion } from "framer-motion";
 import permImg from '../../images/sendcv.jpg';
-import whatToExpect from '../../api/WhatToExpect'
 import UploadCV from '../Home/UploadCV'
-import Contact from "../Home/Contact";
 import Footer from '../Home/Footer'
 import ScrollInView from "../../animation/ScrollInView";
-import { Upload } from "@mui/icons-material";
 import Underline from "../../animation/Underline";
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 
 const UploadPage = () => {
@@ -19,13 +16,17 @@ const UploadPage = () => {
     visible: { width: "auto", transition: { duration: 2, ease: "easeInOut" } },
   };
 
+  const handleScroll = () => {
+    window.scrollTo({ top: 500, behavior:'smooth'})
+  }
+
 
   return (
     <>
       {/* Main Section Container with Flexbox */}
       <Box 
         sx={{
-          height: '45vh', // Height adjusted for better proportions
+          height: '70vh', // Height adjusted for better proportions
           display: changePictureOrientation ? 'block' : 'flex',
           justifyContent: 'space-between', // Space between text and image
           alignItems: 'center', // Vertically centers content
@@ -72,6 +73,8 @@ const UploadPage = () => {
         Submit your CV, and we’ll reach out to discuss the market, your career goals, and match you with current or upcoming opportunities.         
         </Typography>
           </ScrollInView>
+
+          <Typography onClick={() => handleScroll()} fontWeight={800} sx={{marginTop:'20px', display:'flex', alignItems:'center', "&:hover": { color:'#408663', cursor:'pointer' }}}>Submit CV <ArrowCircleRightIcon sx={{marginLeft:'5px'}} /></Typography>
         </Box>
 
         {/* Image Section */}
@@ -90,7 +93,7 @@ const UploadPage = () => {
         />
       </Box>
 
-      <Box sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" }}>
+      <Box id='cv-section' sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" }}>
         <UploadCV/>
       </Box>
 

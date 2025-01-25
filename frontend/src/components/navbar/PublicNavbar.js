@@ -279,7 +279,7 @@ const PublicNavbar = () => {
             )}
           </Box>
 
-          <Button onClick={() => handleNavigation('/#contact')} variant="outlined">
+          <Button onClick={() => handleNavigation('/contact')} variant="outlined">
             Contact
           </Button>
         </Box>
@@ -373,7 +373,7 @@ const PublicNavbar = () => {
         fontWeight: 500,
         ':hover': { color: '#408663' },
       }}
-      onClick={() => {handleNavigation('/#contact')}}
+      onClick={() => {handleNavigation('/contact')}}
     >
       Contact
     </Button>
@@ -384,6 +384,7 @@ const PublicNavbar = () => {
         ':hover': { backgroundColor: '#306F53' },
         color: '#fff',
       }}
+      onClick={() => {handleNavigation('/upload-cv')}}
     >
       Upload CV
     </Button>

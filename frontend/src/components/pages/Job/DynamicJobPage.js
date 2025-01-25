@@ -170,6 +170,8 @@ const DynamicJobPage = () => {
       }, 3000);
       return;
     }
+
+    ////
   
     const formDataToSubmit = new FormData();
   
@@ -194,14 +196,15 @@ const DynamicJobPage = () => {
 
     const applicantId = response.data;  // Example: assuming the response contains the new applicant ID
     const jobId = formData.job_id; 
+    const randomId = Math.random().toString(36).substr(2, 9)
+    console.log(randomId)
 
         sessionStorage.setItem("applicantData", JSON.stringify(applicantId));
         sessionStorage.setItem("jobId", jobId);
   
-      navigate(`/job-confirmation`);
+      navigate(`/job-confirmation/${randomId}`);
   
-  
-  
+
       setBtnLoading(false);
       setBtn('Apply');
   

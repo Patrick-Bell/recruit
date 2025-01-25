@@ -29,6 +29,10 @@ const AppContent = () => {
       return { title: `Job Details | Fiortech Recruitment Group`,};
   }
 
+  if (matchPath("/job-confirmation/:id", location.pathname)) {
+    return { title: `Job Confirmation | Fiortech Recruitment Group`,};
+}
+
     switch (path) {
       case '/':
         return { title: 'Home | Fiortech Recruitment Group' };
@@ -48,8 +52,6 @@ const AppContent = () => {
         return { title: 'Admin Dashboard | Fiortech Recruitment Group' };
       case '/login':
         return { title: 'Login | Fiortech Recruitment Group' }
-      case '/job-confirmation':
-        return { title: 'Job Confirmation | Fiortech Recruitment Group' }
       default:
         return { title: 'Page Not Found | Fiortech Recruitment Group' };
     }
@@ -68,7 +70,7 @@ const AppContent = () => {
       </Helmet>
 
       {/* Conditionally render PublicNavbar based on current path */}
-      {location.pathname !== '/dashboard' && location.pathname !== '/login' && location.pathname !== '/session-expired' && location.pathname !== '/job-confirmation' && <PublicNavbar />}
+      {location.pathname !== '/dashboard' && location.pathname !== '/login' && location.pathname !== '/session-expired' && <PublicNavbar />}
       <ScrollProgress />
 
       <Routes>
@@ -83,7 +85,7 @@ const AppContent = () => {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/session-expired' element={<SessionExpired/>}></Route>
         <Route path='*' element={<NotFound />}></Route>
-        <Route path='/job-confirmation' element={<JobConfirmation />}></Route>
+        <Route path='/job-confirmation/:id' element={<JobConfirmation />}></Route>
         <Route path='/contact' element={<ContactUs />}></Route>
 
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>        
