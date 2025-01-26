@@ -1,9 +1,11 @@
 export const quickLinks = [
+    { name: "Home", link: '/' },
     { name: "About Us", link: '/#about-us' },
     { name: "Specialisms", link: '/#specialisms' },
     { name: "Latest Roles", link: '/#latest-roles' },
     { name: "All Jobs", link: '/jobs' },
     { name: "Mission | Vision", link: '/about#mission' },
+    { name: "What we cover", link: '/about#cover' },
     { name: "Core Values", link: '/about#values' },
     { name: "Process", link: '/about#process' },
     { name: "Solutions", link: '/about#solutions' },

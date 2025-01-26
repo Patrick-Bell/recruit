@@ -8,6 +8,7 @@ import generalRecruitmentSteps from "../../api/GeneralRecruitmentProcess";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import ScrollInView from '../../animation/ScrollInView'
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Slider from "../../animation/Slider";
 
 const About = () => {
 
@@ -81,7 +82,7 @@ const About = () => {
       {/* Our Mission */}
       <Box id='mission' sx={{ padding: { xs: 3, sm: 5 } }}>
   <Underline>
-    <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block" }}>
+    <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block", fontSize: { xs: '1.5rem', sm: '2rem' } }}>
       Our Mission
     </Typography>
   </Underline>
@@ -97,6 +98,28 @@ const About = () => {
   <Typography sx={{ fontFamily: "Poppins", marginTop: 2, lineHeight: 1.8 }}>
     Together, we are shaping the future of work, one meaningful connection at a time.
   </Typography>
+</Box>
+
+<Box id='cover' sx={{ padding: { xs: 3, sm: 5 } }}>
+  <Underline>
+    <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block", fontSize: { xs: '1.5rem', sm: '2rem' }, }}>
+      What we cover
+    </Typography>
+  </Underline>
+  <Typography sx={{ fontFamily: "Poppins", marginTop: 2, lineHeight: 1.8 }}>
+  We specialize in providing end-to-end recruitment solutions within the technology industry, ensuring businesses connect with top talent across every stage of the technology lifecycle.
+We work with a wide range of organizations, from dynamic startups seeking to establish their teams to large enterprises looking to scale or refine their workforce. Our recruitment expertise spans roles at every level—from junior developers and specialists to senior management and executive leadership positions.
+By tailoring our approach to meet the unique needs of each client, we empower organizations to build high-performing teams that drive innovation and long-term success.
+</Typography>
+<Typography sx={{marginTop:'10px'}}>Below are the specialisms we cover:</Typography>
+  <Slider />
+
+  <Typography sx={{ fontFamily: "Poppins", marginTop: 2, lineHeight: 1.8, display:'flex' }}>
+    To see our current open positions, <Box component={'a'} href="/jobs" sx={{marginLeft:'5px', textDecoration:'none', color:'#408663', fontWeight:'800'}}>click here</Box>
+  </Typography>
+
+  
+  
 </Box>
 
 

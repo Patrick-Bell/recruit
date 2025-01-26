@@ -7,6 +7,7 @@ import StorageIcon from "@mui/icons-material/Storage";
 import CloudIcon from "@mui/icons-material/Cloud";
 import Underline from "../../animation/Underline";
 import { FlipTilt } from "react-flip-tilt";
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight'
 
 const Specialisms = () => {
   const specialisms = [
@@ -55,23 +56,28 @@ const Specialisms = () => {
   ];
 
   return (
-    <Box sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" }}>
-      {/* Header */}
-      <Underline>
-        <Typography
-          id="specialisms"
-          variant="h4"
-          sx={{
-            fontWeight: 700,
-            fontFamily: "Poppins",
-            width: "auto",
-            display: "inline-block",
-            scrollMarginTop: "80px",
-          }}
-        >
-          Our Specialisms
-        </Typography>
-      </Underline>
+    <Box id='latest-roles' sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                {/* Header */}
+                <Underline>
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            fontWeight: 700,
+                            fontFamily: "Poppins",
+                            width: 'auto',
+                            display: 'inline-block',
+                        }}
+                    >
+                        Our Specialisms
+                    </Typography>
+                    </Underline>                
+                    <Typography component={'a'} href="/about#cover" fontFamily={'Poppins'} fontWeight={700} fontSize={'large'} sx={{ display: 'flex', alignItems: 'center', color: '#408663', cursor: 'pointer', textDecoration:'none' }}>
+                    View More<ArrowCircleRightIcon sx={{ marginLeft: '5px' }} />
+                </Typography>
+            </Box>
+
+      
 
       {/* Grid Layout */}
       <Grid container spacing={4}>
