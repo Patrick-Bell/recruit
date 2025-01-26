@@ -109,15 +109,7 @@ const Home = () => {
 <Box sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" , overflow:'hidden'}}>
       {/* Header */}
    <Underline>
-    <Typography
-      variant="h4"
-      sx={{
-        fontWeight: 700,
-        fontFamily: "Poppins",
-        width: '100%', // Ensure width adjusts based on the text content
-        display: 'inline-block', // Ensures the text stays on the same line
-      }}
-    >
+   <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block", fontSize: { xs: '1.5rem', sm: '2rem' }, }}>
       Contact Us
     </Typography>
     </Underline>

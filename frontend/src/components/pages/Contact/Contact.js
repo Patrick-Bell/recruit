@@ -77,11 +77,8 @@ const ContactUs = () => {
 
           {/* Contact Information */}
           <Grid item xs={12} md={6}>
-          <Typography
-                variant="h6"
-                sx={{ fontWeight: 600, fontFamily: "Poppins", marginBottom: "5px" }}
-            >
-                Contact Details
+          <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block", fontSize: { xs: '1.5rem', sm: '2rem' }, }}>
+              Contact Us
             </Typography>
               <Typography variant="body1" sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                 <LocationOn sx={{ mr: 1 }} /> UK, London

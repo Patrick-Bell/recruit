@@ -60,17 +60,9 @@ const Specialisms = () => {
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 {/* Header */}
                 <Underline>
-                    <Typography
-                        variant="h4"
-                        sx={{
-                            fontWeight: 700,
-                            fontFamily: "Poppins",
-                            width: 'auto',
-                            display: 'inline-block',
-                        }}
-                    >
-                        Our Specialisms
-                    </Typography>
+                <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block", fontSize: { xs: '1.5rem', sm: '2rem' }, }}>
+                    Our Specialisms
+                  </Typography>
                     </Underline>                
                     <Typography component={'a'} href="/about#cover" fontFamily={'Poppins'} fontWeight={700} fontSize={'large'} sx={{ display: 'flex', alignItems: 'center', color: '#408663', cursor: 'pointer', textDecoration:'none' }}>
                     View More<ArrowCircleRightIcon sx={{ marginLeft: '5px' }} />

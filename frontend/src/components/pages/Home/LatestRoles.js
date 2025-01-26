@@ -68,16 +68,8 @@ const LatestRoles = () => {
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 {/* Header */}
                 <Underline>
-                    <Typography
-                        variant="h4"
-                        sx={{
-                            fontWeight: 700,
-                            fontFamily: "Poppins",
-                            width: 'auto',
-                            display: 'inline-block',
-                        }}
-                    >
-                        Latest Roles
+                <Typography variant="h4" sx={{ fontWeight: 700, fontFamily: "Poppins", display: "inline-block", fontSize: { xs: '1.5rem', sm: '2rem' }, }}>
+                    Latest Roles
                     </Typography>
                     </Underline>                
                     <Typography component={'a'} href="/jobs" fontFamily={'Poppins'} fontWeight={700} fontSize={'large'} sx={{ display: 'flex', alignItems: 'center', color: '#408663', cursor: 'pointer', textDecoration:'none' }}>

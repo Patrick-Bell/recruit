@@ -26,7 +26,7 @@ const Slider = () => {
     },
   })
   return (
-    <Box sx={{p:3}} ref={sliderRef} className="keen-slider">
+    <Box sx={{margin:'30px 0'}} ref={sliderRef} className="keen-slider">
         {slider.map((job, i) => (
             <Box textAlign={'center'} className={`keen-slider__slide number-slide${i}`}>
                 <img src={job.icon} />

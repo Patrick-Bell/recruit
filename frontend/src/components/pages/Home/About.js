@@ -114,7 +114,7 @@ By tailoring our approach to meet the unique needs of each client, we empower or
 <Typography sx={{marginTop:'10px'}}>Below are the specialisms we cover:</Typography>
   <Slider />
 
-  <Typography sx={{ fontFamily: "Poppins", marginTop: 2, lineHeight: 1.8, display:'flex' }}>
+  <Typography sx={{ fontFamily: "Poppins", marginTop: 0, linHeight: 1.8, display:'flex' }}>
     To see our current open positions, <Box component={'a'} href="/jobs" sx={{marginLeft:'5px', textDecoration:'none', color:'#408663', fontWeight:'800'}}>click here</Box>
   </Typography>
 
