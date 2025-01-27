@@ -76,8 +76,8 @@ const AddJob = () => {
     try {
         const response = await addJob(formData)
         console.log(response)
-        //setActiveStep(0)
-        /*setFormData({
+        setActiveStep(0)
+        setFormData({
             job_title: "",
             job_type: "",
             job_desc: [],
@@ -93,7 +93,7 @@ const AddJob = () => {
             job_skills: [],
             job_benefits: [],
           })
-            */
+            
     }catch(e) {
         console.log(e)
     }
