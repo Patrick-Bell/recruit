@@ -425,9 +425,7 @@ By tailoring our approach to meet the unique needs of each client, we empower or
         marginTop: 2,
       }}
     >
-      With years of experience in the recruitment industry, Aaron has helped
-      countless professionals land their dream roles and has built a strong
-      network of top-tier companies seeking the best talent.
+     With years of experience in the recruitment industry, Aaron has helped countless professionals land their dream roles and has built a strong network of top-tier companies seeking the best talent. He has a deep understanding of the tech sector, having worked closely with startups and established firms to connect them with top engineers, product managers, and other key professionals.
     </Typography>
 
     {/* LinkedIn Icon */}

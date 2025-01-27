@@ -18,7 +18,7 @@
    allow do
     origins 'https://recruit-xicp.onrender.com'  # For production frontend
 
-    resource "*",
+    resource "/rails/active_storage/*",
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head],
       credentials: true

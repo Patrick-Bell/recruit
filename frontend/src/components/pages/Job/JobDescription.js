@@ -33,6 +33,11 @@ const JobDescription = ({ job, setValue }) => {
                 <Typography fontFamily={'Poppins'}>Location</Typography>
                 <Typography fontFamily={'Poppins'}><strong>{job?.job_location}</strong></Typography>
               </Box>
+
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0' }}>
+                <Typography fontFamily={'Poppins'}>Working Model</Typography>
+                <Typography fontFamily={'Poppins'}><strong>{job?.job_hybrid?.charAt(0).toUpperCase() + job?.job_hybrid?.slice(1)}</strong></Typography>
+              </Box>
   
               {/* Salary / Rate Section */}
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0' }}>

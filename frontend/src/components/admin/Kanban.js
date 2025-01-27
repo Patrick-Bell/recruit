@@ -40,6 +40,7 @@ const Kanban = ({ job, applicants, setApplicants }) => {
     return acc;
   }, {});
 
+
   const handleDragStart = (e, applicantId, fromStage) => {
     e.dataTransfer.setData("applicantId", applicantId);
     e.dataTransfer.setData("fromStage", fromStage);
