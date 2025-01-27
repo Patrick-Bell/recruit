@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     if token.present?
       begin
         # Decode the token (JWT.decode returns an array, so get the first element)
-        payload, _header = JWT.decode(token, JWT_SECRET_KEY)
+        payload, _header = JWT.decode(token, JWT_SECRET_KEY, true, algorithm: 'HS256')
 
         Rails.logger.info "Decoded payload: #{payload.inspect}"  # Log the decoded payload
 

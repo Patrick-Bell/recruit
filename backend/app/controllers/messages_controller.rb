@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!, except: [:create]  # Require authentication for everything except creating applicants
   before_action :set_message, only: %i[ show update destroy ]
 
   # GET /messages

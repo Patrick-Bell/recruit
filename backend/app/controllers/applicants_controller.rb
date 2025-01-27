@@ -1,5 +1,5 @@
 class ApplicantsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, except: [:create]  # Require authentication for everything except creating applicants
   before_action :set_applicant, only: %i[ show update destroy ]
 
   # GET /applicants
