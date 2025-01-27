@@ -246,7 +246,6 @@ const Applicants = () => {
                 </Typography>
 
                 <iframe style={{width:'100%', height:'400px', borderRadius:'10px', marginBottom:'30px'}} src={`https://recruit-xicp.onrender.com${selectedCandidate.cv_url}`}>
-
                 </iframe>
 
                 {/* Buttons Section */}

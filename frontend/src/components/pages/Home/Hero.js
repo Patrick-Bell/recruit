@@ -1,9 +1,12 @@
 import { Box, Typography, Button,  } from "@mui/material"
 import ScrollInView from "../../animation/ScrollInView"
 import Logo from '../../images/test.jpg'
+import { useNavigate } from 'react-router-dom'
 
 
 const Hero = () => {
+
+  const navigate = useNavigate()
 
     return (
 
@@ -77,8 +80,9 @@ const Hero = () => {
                 padding: '10px 20px',
                 fontSize: { xs: '14px', sm: '16px' }, // Responsive font sizes for the button
               }}
+              onClick={() => navigate('/about')}
             >
-              Get Started
+              Learn More!
             </Button>
             </ScrollInView>
           </Box>

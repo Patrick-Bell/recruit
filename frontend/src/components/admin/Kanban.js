@@ -199,7 +199,7 @@ const Kanban = ({ job, applicants, setApplicants }) => {
                       <Tooltip title="Download CV">
                         <IconButton size="small">
                           <MuiLink
-                            href={`http://localhost:3000${applicant.cv_url}`}
+                            href={`https://recruit-xicp.onrender.com${applicant.cv_url}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -320,7 +320,7 @@ const Kanban = ({ job, applicants, setApplicants }) => {
       {selectedApplicant.cv_url ? (
         <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: '8px', mt: 2 }}>
           <iframe
-            src={`http://localhost:3000${selectedApplicant.cv_url}`}
+            src={`https://recruit-xicp.onrender.com${selectedApplicant.cv_url}`}
             height="500px"
             width="100%"
             title="Candidate CV"
