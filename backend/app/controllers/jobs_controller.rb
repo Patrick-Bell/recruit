@@ -58,6 +58,11 @@ class JobsController < ApplicationController
     @jobs = Job.where(created_at: 7.days.ago..Time.current)
     render json: @jobs, status: :ok
   end
+
+  def send_summary
+    WeeklyReportMailer.weekly_summary.deliver_now
+  end
+  
   
 
 

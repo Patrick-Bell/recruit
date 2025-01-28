@@ -12,12 +12,14 @@ import Applicants from "./Applicants";
 import CountDown from "../app/Session";
 import { useAuth } from "../context/AuthContext";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import HomeIcon from '@mui/icons-material/Home';
+import Home from "./Home";
 
 const drawerWidth = 260;
 
 const Dashboard = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('jobs');
+  const [activeSection, setActiveSection] = useState('home');
   const { user, expire, logout } = useAuth()
 
 
@@ -26,6 +28,7 @@ const Dashboard = () => {
   };
 
   const sidebarItems = [
+    { text: 'Dashboard', active: 'home', icon: <HomeIcon />},
     { text: "Jobs", active: 'jobs', icon: <WorkIcon /> },
     { text: "Add Job", active: 'add-job', icon: <AddBoxIcon /> },
     { text: "Applicants", active: 'applicants', icon: <PersonIcon /> },
@@ -36,6 +39,8 @@ const Dashboard = () => {
     switch (activeSection) {
       case 'jobs':
         return <AllJobs />;
+      case 'home':
+        return <Home setActiveSection={setActiveSection} />
       case 'add-job':
         return <AddJob />;
       case 'messages':

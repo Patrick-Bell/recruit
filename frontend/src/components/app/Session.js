@@ -17,7 +17,7 @@ function CountDown({ date }) {
             // Render the completion state and trigger navigation
             return <Completionist />;
         } else {
-            console.log(date)
+            //nothing
         }
     };
 

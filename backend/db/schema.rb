@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_21_104316) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_28_131744) do
   create_schema "auth"
   create_schema "extensions"
   create_schema "graphql"
@@ -113,6 +113,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_21_104316) do
     t.string "email"
     t.string "message"
     t.boolean "responded", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.string "title"
+    t.boolean "completed", default: false
+    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reminders
 
   root "home#index"  # Set the root path to home#index
 
@@ -26,6 +27,9 @@ Rails.application.routes.draw do
     resources :jobs
     resources :applicants
     resources :candidates
+    resources :reminders
+
+    post 'send_summary', to: 'jobs#send_summary', as: 'send_summary'
 
     # Endpoint to get current_user (show user info)
   end

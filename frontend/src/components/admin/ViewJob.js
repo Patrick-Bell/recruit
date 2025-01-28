@@ -8,6 +8,7 @@ import { toast, Toaster } from 'sonner';
 import { generateJobSpec } from '../functions/JobSpec';
 import {deleteJob} from '../routes/JobsRoutes'
 import { GridDeleteIcon } from '@mui/x-data-grid';
+import DaysPosted from './JobDays';
 
 
 
@@ -57,7 +58,7 @@ const ViewJob = ({ job, onBack }) => {
                     <strong>Posted on:</strong> {new Date(job.created_at).toLocaleDateString()}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-                    <strong>Open for:</strong> 4 days
+                    <strong>Open for:</strong> <DaysPosted date={(job.created_at)} />
                 </Typography>
                 <Divider sx={{mt:1}}/>
                 <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
