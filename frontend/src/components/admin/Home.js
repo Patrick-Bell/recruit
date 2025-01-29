@@ -290,7 +290,7 @@ const Home = ({ setActiveSection }) => {
                   {stageCounts.map(({ name, color }) => (
                     <Box key={name} sx={{ display: "flex", alignItems: "center", mr: 2 }}>
                       <Box sx={{ width: 14, height: 14, backgroundColor: color, borderRadius: 1, mr: 1 }} />
-                      <Typography variant="body2">{name}</Typography>
+                      <Typography variant="caption">{name}</Typography>
                     </Box>
                   ))}
                 </Box>
@@ -356,7 +356,7 @@ const Home = ({ setActiveSection }) => {
           <Divider sx={{ flexGrow: 1, ml: 2 }} />
         </Box>
 
-        <Box sx={{height:'400px', overflow:'scroll'}}> 
+        <Box sx={{maxHeight:'400px', overflow:'scroll'}}> 
         {reminders.length === 0 && (
           <Typography variant="subtitle1" color="grey">No Reminders Added</Typography>
         )}

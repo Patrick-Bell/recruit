@@ -139,9 +139,6 @@ const AllJobs = ({  }) => {
       ):(
         <>
         
-      <Grid container spacing={3}>
-        {/* Left Section for Table */}
-        <Grid item xs={12} md={8}>
         <Paper elevation={3} sx={{ p: 2, height: 400, overflow: 'auto' }}>
   <DataGrid
     rows={jobs}
@@ -163,50 +160,8 @@ const AllJobs = ({  }) => {
     pageSizeOptions={[5, 10, 20]}
   />
 </Paper>
-        </Grid>
-        {/* Right Section for 3 Vertical Boxes */}
-        <Grid item xs={12} md={4}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper elevation={3} sx={{ p: 2,}}>
-                <Typography fontFamily={'Poppins'} sx={{marginBottom:3}} color="grey">Applicants</Typography>
-                <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                  <Typography fontWeight={800} fontSize={30}>{Number(30000).toLocaleString()}</Typography>
-                  <Box sx={{display:'flex', background:'lightgrey', padding:'5px', borderRadius:'10px'}}>
-                    <Typography variant="caption" sx={{marginLeft:'5px'}}>last 7 days</Typography>
-                  </Box>
-                </Box>
-              </Paper>
-            </Grid>
+        
 
-            <Grid item xs={12}>
-              <Paper elevation={3} sx={{ p: 2,}}>
-                <Typography fontFamily={'Poppins'} sx={{marginBottom:3}} color="grey">Permanent Jobs</Typography>
-                <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                  <Typography fontWeight={800} fontSize={30}>{Number(30000).toLocaleString()}</Typography>
-                  <Box sx={{display:'flex', background:'lightgrey', padding:'5px', borderRadius:'10px'}}>
-                    <Typography variant="caption" sx={{marginLeft:'5px'}}>last 7 days</Typography>
-                  </Box>
-                </Box>
-              </Paper>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Paper elevation={3} sx={{ p: 2,}}>
-                <Typography fontFamily={'Poppins'} sx={{marginBottom:3}} color="grey">New Jobs</Typography>
-                <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                  <Typography fontWeight={800} fontSize={30}>{Number(30000).toLocaleString()}</Typography>
-                  <Box sx={{display:'flex', background:'lightgrey', padding:'5px', borderRadius:'10px'}}>
-                    <Typography variant="caption" sx={{marginLeft:'5px'}}>last 7 days</Typography>
-                  </Box>
-                </Box>
-              </Paper>
-            </Grid>
-
-
-          </Grid>
-        </Grid>
-      </Grid>
       </>
        )}
     </Box>
