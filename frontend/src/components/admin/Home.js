@@ -199,7 +199,9 @@ const Home = ({ setActiveSection }) => {
                 </Box>
                 <Divider sx={{ my: 1 }} />
                 <List>
-                  {jobs.slice(0, 3).map((job, index) => (
+                  {jobs
+                  .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                  .slice(0, 3).map((job, index) => (
                     <ListItem key={index} sx={{ "&:hover": { backgroundColor: lightGrey } }}>
                       <ListItemAvatar>
                         <Avatar sx={{ bgcolor: primaryGreen, borderRadius: 2 }}>
@@ -223,7 +225,9 @@ const Home = ({ setActiveSection }) => {
                 </Box>
                 <Divider sx={{ my: 1 }} />
                 <List>
-                  {messages.slice(0, 3).map((message, index) => (
+                  {messages
+                  .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                  .slice(0, 3).map((message, index) => (
                     <ListItem key={index} sx={{ "&:hover": { backgroundColor: lightGrey } }}>
                       <ListItemAvatar>
                         <Avatar sx={{ bgcolor: primaryGreen, borderRadius: 2 }}>
@@ -247,7 +251,9 @@ const Home = ({ setActiveSection }) => {
                 </Box>
                 <Divider sx={{ my: 1 }} />
                 <List>
-                  {candidates.slice(0, 3).map((candidate, index) => (
+                  {candidates
+                  .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                  .slice(0, 3).map((candidate, index) => (
                     <ListItem key={index} sx={{ "&:hover": { backgroundColor: lightGrey } }}>
                       <ListItemAvatar>
                         <Avatar sx={{ bgcolor: primaryGreen, borderRadius: 2 }}>
@@ -288,7 +294,7 @@ const Home = ({ setActiveSection }) => {
                 </ResponsiveContainer>
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
                   {stageCounts.map(({ name, color }) => (
-                    <Box key={name} sx={{ display: "flex", alignItems: "center", mr: 2 }}>
+                    <Box key={name} sx={{ display: "flex", alignItems: "center", mr: 2, flexWrap:'wrap' }}>
                       <Box sx={{ width: 14, height: 14, backgroundColor: color, borderRadius: 1, mr: 1 }} />
                       <Typography variant="caption">{name}</Typography>
                     </Box>

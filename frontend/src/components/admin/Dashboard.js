@@ -1,52 +1,63 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, IconButton, Avatar, Box, List, ListItem, ListItemText, Typography, Drawer, CssBaseline, Divider, Button } from "@mui/material";
+import {
+  AppBar, Toolbar, IconButton, Avatar, Box, List, ListItem, ListItemText,
+  Typography, Drawer, CssBaseline, Divider, useMediaQuery
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import WorkIcon from '@mui/icons-material/Work';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import PersonIcon from '@mui/icons-material/Person';
-import MessageIcon from '@mui/icons-material/Message';
+import WorkIcon from "@mui/icons-material/Work";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import PersonIcon from "@mui/icons-material/Person";
+import MessageIcon from "@mui/icons-material/Message";
 import AllJobs from "./AllJobs";
 import AddJob from "./AddJob";
 import Messages from "./Messages";
 import Applicants from "./Applicants";
 import CountDown from "../app/Session";
 import { useAuth } from "../context/AuthContext";
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import HomeIcon from '@mui/icons-material/Home';
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import HomeIcon from "@mui/icons-material/Home";
 import Home from "./Home";
 
 const drawerWidth = 260;
 
 const Dashboard = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-  const { user, expire, logout } = useAuth()
+  const [activeSection, setActiveSection] = useState("home");
+  const { user, expire, logout } = useAuth();
 
+  const smallScreen = useMediaQuery("(max-width: 1170px)");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleMenuItemClick = (section) => {
+    setActiveSection(section);
+    if (smallScreen) {
+      setMobileOpen(false); // Close menu on item click for mobile
+    }
+  };
+
   const sidebarItems = [
-    { text: 'Dashboard', active: 'home', icon: <HomeIcon />},
-    { text: "Jobs", active: 'jobs', icon: <WorkIcon /> },
-    { text: "Add Job", active: 'add-job', icon: <AddBoxIcon /> },
-    { text: "Applicants", active: 'applicants', icon: <PersonIcon /> },
-    { text: "Messages", active: 'messages', icon: <MessageIcon /> },
+    { text: "Dashboard", active: "home", icon: <HomeIcon /> },
+    { text: "Jobs", active: "jobs", icon: <WorkIcon /> },
+    { text: "Add Job", active: "add-job", icon: <AddBoxIcon /> },
+    { text: "Applicants", active: "applicants", icon: <PersonIcon /> },
+    { text: "Messages", active: "messages", icon: <MessageIcon /> },
   ];
 
   const renderSection = () => {
     switch (activeSection) {
-      case 'jobs':
+      case "jobs":
         return <AllJobs />;
-      case 'home':
-        return <Home setActiveSection={setActiveSection} />
-      case 'add-job':
+      case "home":
+        return <Home setActiveSection={setActiveSection} />;
+      case "add-job":
         return <AddJob />;
-      case 'messages':
-        return <Messages />
-      case 'applicants':
-        return <Applicants /> 
+      case "messages":
+        return <Messages />;
+      case "applicants":
+        return <Applicants />;
       default:
         return <Typography variant="h6">Select a section</Typography>;
     }
@@ -55,14 +66,13 @@ const Dashboard = () => {
   const drawer = (
     <Box
       sx={{
-        width: drawerWidth,
+        width: smallScreen ? "100%" : drawerWidth,
         height: "100vh",
         backgroundColor: "#ffffff",
         padding: 2,
         borderRight: "1px solid #e0e0e0",
       }}
     >
-      {/* Sidebar Header */}
       <Typography
         variant="h6"
         sx={{
@@ -77,13 +87,11 @@ const Dashboard = () => {
       </Typography>
       <Divider />
 
-      {/* Sidebar Menu */}
-      <List sx={{ display: "flex", flexDirection: "column", height: 'calc(100% - 50px)' }}>
-      {sidebarItems.map((item, index) => (
+      <List sx={{ display: "flex", flexDirection: "column", height: "calc(100% - 50px)" }}>
+        {sidebarItems.map((item, index) => (
           <ListItem
             key={index}
-            button
-            onClick={() => setActiveSection(item.active)}
+            onClick={() => handleMenuItemClick(item.active)}
             sx={{
               borderLeft: activeSection === item.active ? "5px solid #408663" : "",
               backgroundColor: activeSection === item.active ? "rgba(64, 134, 99, 0.15)" : "transparent",
@@ -103,25 +111,30 @@ const Dashboard = () => {
           </ListItem>
         ))}
         <ListItem
-            button
-            onClick={logout}
-            sx={{
-              backgroundColor: "transparent",
-              color: "#666",
-              "&:hover": {
-                backgroundColor: "rgba(64, 134, 99, 0.1)",
-                cursor: "pointer",
-              },
-              marginTop:'auto',
-              transition: "background-color 0.3s ease",
-              padding: "12px 15px",
-              borderRadius: "5px",
-              marginBottom: "5px",
-            }}
-          >
-            <Box sx={{ display: "flex", alignItems: "center" }}>{<ExitToAppIcon />}</Box>
-            <ListItemText sx={{ marginLeft: "12px" }} primary={'Logout'} />
-          </ListItem>
+          onClick={async () => {
+            await logout();
+            setActiveSection("home");
+            if (smallScreen) setMobileOpen(false);
+          }}
+          sx={{
+            backgroundColor: "transparent",
+            color: "#666",
+            "&:hover": {
+              backgroundColor: "rgba(64, 134, 99, 0.1)",
+              cursor: "pointer",
+            },
+            marginTop: "auto",
+            transition: "background-color 0.3s ease",
+            padding: "12px 15px",
+            borderRadius: "5px",
+            marginBottom: "5px",
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <ExitToAppIcon />
+          </Box>
+          <ListItemText sx={{ marginLeft: "12px" }} primary={"Logout"} />
+        </ListItem>
       </List>
     </Box>
   );
@@ -132,7 +145,9 @@ const Dashboard = () => {
 
       {/* Sidebar / Drawer */}
       <Drawer
-        variant="permanent"
+        variant={smallScreen ? "temporary" : "permanent"}
+        open={mobileOpen || !smallScreen} // Always open on large screens
+        onClose={handleDrawerToggle} // Allow closing on small screens
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -143,22 +158,19 @@ const Dashboard = () => {
             borderRight: "1px solid #e0e0e0",
           },
         }}
-        open
       >
         {drawer}
       </Drawer>
 
-
       {/* Main Content */}
       <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
-        
         {/* AppBar (Top Navigation) */}
         <AppBar
           position="fixed"
           elevation={1}
           sx={{
-            width: `calc(100% - ${drawerWidth}px)`,
-            ml: `${drawerWidth}px`,
+            width: smallScreen ? "100%" : `calc(100% - ${drawerWidth}px)`,
+            ml: smallScreen ? 0 : `${drawerWidth}px`,
             backgroundColor: "#ffffff",
             color: "#333",
             boxShadow: "none",
@@ -167,15 +179,16 @@ const Dashboard = () => {
           }}
         >
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ display: { sm: "none" } }}
-            >
-              <MenuIcon />
-            </IconButton>
+            {smallScreen && (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
             <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700 }}>
               Dashboard
             </Typography>
@@ -184,10 +197,12 @@ const Dashboard = () => {
         </AppBar>
 
         {/* Main Content Area */}
-        <Box sx={{ flexGrow: 1, p: 3, mt: '75px', background: '#f9f9f9' }}>{renderSection()}</Box>
+        <Box sx={{ flexGrow: 1, p: 3, mt: "75px", background: "#f9f9f9" }}>
+          {renderSection()}
+        </Box>
       </Box>
 
-      <CountDown date={new Date(expire)} />
+      <CountDown date={new Date(expire || Date.now())} />
     </Box>
   );
 };
