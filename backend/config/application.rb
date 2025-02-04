@@ -30,19 +30,6 @@ module Backend
 
 
 
-    # config/initializers/active_storage.rb
-Rails.application.config.active_storage.service_urls_expire_in = 5.minutes
-
-Rails.application.config.active_storage.service = :supabase
-
-Rails.application.config.active_storage.service = {
-  supabase: SupabaseService.new(
-    supabase_url: ENV['SUPABASE_URL'],
-    supabase_key: ENV['SUPABASE_KEY'],
-    bucket: "applicant-cvs"
-  )
-}
-
 
 
 

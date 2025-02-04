@@ -10,11 +10,14 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-  production:
-  service: Supabase
-  supabase_url: <%= ENV['SUPABASE_URL'] %>
-  supabase_key: <%= ENV['SUPABASE_KEY'] %>
-  bucket: "applicant-cvs" 
+supabase:
+  service: S3
+  access_key_id: <%= ENV['SUPABASE_KEY'] %>
+  secret_access_key: <%= ENV['SUPABASE_SECRET_ACCESS_KEY'] %>  # This is optional depending on the access level you need
+  region: <%= ENV['SUPABASE_REGION'] %>
+  bucket: <%= ENV['SUPABASE_BUCKET'] %>
+  endpoint: <%= ENV['SUPABASE_ENDPOINT'] %>
+
 
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
