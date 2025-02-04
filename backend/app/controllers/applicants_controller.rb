@@ -17,9 +17,12 @@ class ApplicantsController < ApplicationController
   # POST /applicants
   def create
     @applicant = Applicant.new(applicant_params)
+
+    if params[:cv]
+      @applicant.cv.attach(params[:cv])
+    end
     Rails.logger.info("Incoming applicant params: #{params.inspect}")
 
-    
 
     if @applicant.save
       SendApplicationEmailJob.perform_later(@applicant.id)

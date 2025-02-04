@@ -1,22 +1,25 @@
 class Applicant < ApplicationRecord
   belongs_to :job
-
   has_one_attached :cv, dependent: :destroy
 
-  # You could store the URL directly in your model (if needed)
+  # This method generates a signed URL with a long expiration (e.g., 1 month)
   def cv_url
     if cv.attached?
-      # Use the original filename or path for direct access
-      bucket = "applicant-cvs"  # Your private bucket name
-      file_name = "cv_#{id}.pdf"  # Your unique file identifier
+      file_name = "cv_#{id}.pdf"
+      bucket = "applicant-cvs" # Your private bucket name
 
-      # Construct the public URL or any other way to access the file
-      # If the bucket is private, you would need to use Supabase storage URL.
-      supabase_url = ENV['SUPABASE_URL']  # Ensure this is set in your environment
-      public_url = "#{supabase_url}/storage/v1/object/#{bucket}/#{file_name}"
+      # Define your expiration time (1 month = 30 days * 24 hours * 60 minutes * 60 seconds)
+      expiration_time = 30 * 24 * 60 * 60 # 1 month in seconds
 
-      # Return the permanent URL (not signed)
-      public_url
+      # Generate the signed URL
+      supabase_storage = Supabase::Storage.new(
+        url: ENV['SUPABASE_URL'], 
+        api_key: ENV['SUPABASE_KEY']
+      )
+
+      signed_url = supabase_storage.from(bucket).signed_url(file_name, expires_in: expiration_time)
+
+      signed_url
     else
       ''
     end
