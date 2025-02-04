@@ -199,7 +199,7 @@ const Kanban = ({ job, applicants, setApplicants }) => {
                       <Tooltip title="Download CV">
                         <IconButton size="small">
                           <MuiLink
-                            href={`https://recruit-xicp.onrender.com${applicant.cv_url}`}
+                            href={applicant.cv_url}
                             target="_blank"
                             rel="noopener noreferrer"
                           >

@@ -10,6 +10,12 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+  production:
+  service: Supabase
+  supabase_url: <%= ENV['SUPABASE_URL'] %>
+  supabase_key: <%= ENV['SUPABASE_KEY'] %>
+  bucket: "applicant-cvs"  # The name of your Supabase Storage bucket
+
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
