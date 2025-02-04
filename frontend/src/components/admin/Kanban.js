@@ -31,7 +31,7 @@ const Kanban = ({ job, applicants, setApplicants }) => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedApplicant, setSelectedApplicant] = useState(null);
 
-  const [url, setUrl] = useState('http://localhost:3000');
+  const [url, setUrl] = useState('https://recruit-xicp.onrender.com');
   
   // Define Kanban stages
   const stages = ["applied", "interviewing", "hired", "rejected"];
