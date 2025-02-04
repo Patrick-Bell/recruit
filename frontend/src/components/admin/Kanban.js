@@ -31,6 +31,8 @@ const Kanban = ({ job, applicants, setApplicants }) => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedApplicant, setSelectedApplicant] = useState(null);
 
+  const [url, setUrl] = useState('http://localhost:3000');
+  
   // Define Kanban stages
   const stages = ["applied", "interviewing", "hired", "rejected"];
 
@@ -199,7 +201,7 @@ const Kanban = ({ job, applicants, setApplicants }) => {
                       <Tooltip title="Download CV">
                         <IconButton size="small">
                           <MuiLink
-                            href={applicant.cv_url}
+                            href={`${url}${applicant.cv_url}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -320,7 +322,7 @@ const Kanban = ({ job, applicants, setApplicants }) => {
       {selectedApplicant.cv_url ? (
         <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: '8px', mt: 2 }}>
           <iframe
-            src={`https://recruit-xicp.onrender.com${selectedApplicant.cv_url}`}
+            src={`${url}${selectedApplicant.cv_url}`}
             height="500px"
             width="100%"
             title="Candidate CV"

@@ -6,7 +6,7 @@ gem "rails", "~> 7.2.2"
 gem "pg", "~> 1.4"
 
 # Move dotenv-rails outside of development and test so it's available in all environments
-gem 'dotenv-rails', require: 'dotenv/load'
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'whenever', require: false
 
@@ -14,13 +14,12 @@ gem "devise", "~> 4.9"
 gem "devise-jwt", "~> 0.12.1"
 gem 'jwt'
 
-gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3', '~> 1.0'
 
-
-
-
+gem 'image_processing', '~> 1.2'
 
 gem 'supabase'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -62,4 +61,3 @@ group :development, :test do
   gem 'clockwork'
 end
 
-gem "webpacker", "~> 5.4"
