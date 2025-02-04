@@ -14,6 +14,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
 import { useAuth } from '../context/AuthContext'
 import { StyledBadge } from "./StyledBadge";
+import { sendEmailSummary } from "../routes/UserRoutes";
 
 const primaryGreen = "#408663";
 const lightGreen = "#66A877";
@@ -47,7 +48,7 @@ const Home = ({ setActiveSection }) => {
 
   const handleSubmitSummary = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/send_summary', {}, { withCredentials: true })
+      const response = await sendEmailSummary()
       console.log(response.data)
       handleCloseSummary()
     }catch(e){

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = 'http://localhost:3000/api'
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000/api'
 
 
 export const addReminder = async (formData) => {
