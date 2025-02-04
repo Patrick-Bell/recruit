@@ -5,8 +5,12 @@ class Applicant < ApplicationRecord
 
 
     def cv_url
-      cv.attached? ? Rails.application.routes.url_helpers.rails_blob_path(cv, only_path: true, expires_in: 1.year) : ''
+      cv.attached? ? Rails.application.routes.url_helpers.rails_blob_url(cv, only_path: true) : ''
     end
+    
+
+
+    
     
     
 
