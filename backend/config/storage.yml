@@ -13,7 +13,6 @@ local:
 supabase:
   service: S3
   access_key_id: <%= ENV['SUPABASE_KEY'] %>
-  secret_access_key: <%= ENV['SUPABASE_SECRET_ACCESS_KEY'] %>  # This is optional depending on the access level you need
   region: <%= ENV['SUPABASE_REGION'] %>
   bucket: <%= ENV['SUPABASE_BUCKET'] %>
   endpoint: <%= ENV['SUPABASE_ENDPOINT'] %>
