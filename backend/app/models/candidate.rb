@@ -3,8 +3,13 @@ class Candidate < ApplicationRecord
     has_one_attached :cv_file
 
     def cv_url
-        cv_file.attached? ? Rails.application.routes.url_helpers.rails_blob_url(cv_file, only_path: true) : ''
+      if cv_file.attached?
+        # Use Cloudinary's method to generate the URL
+        Cloudinary::Utils.cloudinary_url(cv_file.key, type: :upload)
+      else
+        ''
       end
+    end
 
 
 end

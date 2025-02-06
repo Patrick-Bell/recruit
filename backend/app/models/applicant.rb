@@ -1,23 +1,18 @@
 class Applicant < ApplicationRecord
-    belongs_to :job
+  belongs_to :job
 
-    has_one_attached :cv, dependent: :destroy
+  has_one_attached :cv, dependent: :destroy
 
-
-    def cv_url
-      cv.attached? ? Rails.application.routes.url_helpers.rails_blob_url(cv, only_path: true) : ''
+  def cv_url
+    if cv.attached?
+      # Use Cloudinary's method to generate the URL
+      Cloudinary::Utils.cloudinary_url(cv.key, type: :upload)
+    else
+      ''
     end
-    
-
-
-    
-    
-    
-
-      private
-
-   
-   
-   
   end
   
+
+  
+
+end

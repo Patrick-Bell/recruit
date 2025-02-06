@@ -12,13 +12,16 @@ import {
   ToggleButtonGroup,
   ToggleButton,
   Grid,
-  Divider,
-  CircularProgress
+  CircularProgress,
+  Menu, MenuItem,
+  Divider, 
+  Link as MuiLink,
 } from "@mui/material";
 import ArticleIcon from '@mui/icons-material/Article';
 import SendIcon from "@mui/icons-material/Send";
 import CheckIcon from "@mui/icons-material/Check";
-import { getCandidates, readMessage } from "../routes/ApplicantRoutes";
+import { getCandidates, readMessage, deleteOneCandidate } from "../routes/ApplicantRoutes";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const Applicants = () => {
   const [candidates, setCandidates] = useState([]);
@@ -27,13 +30,20 @@ const Applicants = () => {
   const [last7DaysCandidates, setLast7DaysCandidates] = useState([]);
   const [candidatesAdded, setCandidatesAdded] = useState(0)
   const [pageLoading, setPageLoading] = useState(true)
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
 
   useEffect(() => {
     fetchCandidates();
-  }, [filter, selectedCandidate]);
-
-  //
+  }, [filter, selectedCandidate, open]);
 
   const fetchCandidates = async () => {
     try {
@@ -87,6 +97,23 @@ const Applicants = () => {
     if (filter === "not_added") return !candidate.added_to_system;
     return true;
   });
+
+  const handleDownload = (candidate) => {
+    window.open(candidate.cv_url, "_blank", "noopener,noreferrer");
+  };
+  
+
+  const handleDelete = async (id) => {
+    try {
+    await deleteOneCandidate(id)
+    setAnchorEl(null)
+    setSelectedCandidate(null)
+    } catch(e){
+      console.log(e)
+    }
+  }
+
+
 
   if (pageLoading) {
     return (
@@ -221,6 +248,24 @@ const Applicants = () => {
                       <ArticleIcon color={candidate.added_to_system ? "success" : "error"} />
                     </ListItemIcon>
                     <ListItemText primary={candidate.name} secondary={new Date(candidate.created_at).toLocaleString()} />
+                    <Box>
+                      <MoreVertIcon onClick={handleClick}/>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          'aria-labelledby': 'basic-button',
+                        }}
+                      >
+                        <MenuItem onClick={markAsResponded}>Mark As Added</MenuItem>
+                        <MenuItem onClick={() => handleReply(candidate?.email)}>Reply</MenuItem>
+                        <MenuItem onClick={() => handleDownload(candidate)}>Download</MenuItem>
+                        <Divider />
+                        <MenuItem onClick={() => handleDelete(candidate?.id)}>Delete</MenuItem>
+                      </Menu>
+                    </Box>
                   </ListItem>
                 ))}
               </List>
@@ -245,44 +290,9 @@ const Applicants = () => {
                   Phone: {selectedCandidate.phone}
                 </Typography>
 
-                <iframe style={{width:'100%', height:'400px', borderRadius:'10px', marginBottom:'30px'}} src={`https://recruit-xicp.onrender.com${selectedCandidate.cv_url}`}>
+                <iframe style={{width:'100%', height:'400px', borderRadius:'10px', marginBottom:'30px'}} 
+                src={`${selectedCandidate.cv_url.replace("/upload/", "/upload/f_auto,q_auto,w_800/")}.jpg`}>
                 </iframe>
-
-                {/* Buttons Section */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    bottom: 20,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: "95%",
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  {/* "Mark as Responded" Button */}
-                  <Button
-                    variant="contained"
-                    startIcon={<CheckIcon />}
-                    onClick={markAsResponded}
-                    disabled={selectedCandidate.added_to_system}
-                    fullWidth
-                    sx={{ mr: 1 }}
-                  >
-                    {selectedCandidate.added_to_system ? "Added" : "Mark as Added"}
-                  </Button>
-
-                  {/* "Reply" Button */}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    startIcon={<SendIcon />}
-                    fullWidth
-                    onClick={() => handleReply(selectedCandidate.email)}
-                  >
-                    Reply
-                  </Button>
-                </Box>
               </>
             ) : (
               <Typography variant="subtitle2" color="gray">

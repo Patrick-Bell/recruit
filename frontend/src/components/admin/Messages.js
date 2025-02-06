@@ -13,22 +13,33 @@ import {
   ToggleButton,
   Grid,
   Divider,
-  CircularProgress
+  CircularProgress,
+  Menu, MenuItem,
 } from "@mui/material";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import SendIcon from "@mui/icons-material/Send";
 import CheckIcon from "@mui/icons-material/Check";
-import { getMessages, completeMessage } from "../routes/MessageRoutes";
+import { getMessages, completeMessage, deleteOnemessage } from "../routes/MessageRoutes";
 
 const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [filter, setFilter] = useState("all");
   const [pageLoading, setPageLoading] = useState(true)
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   useEffect(() => {
     fetchMessages();
-  }, []);
+  }, [open]);
 
   const fetchMessages = async () => {
     try {
@@ -75,6 +86,16 @@ const Messages = () => {
       console.error("Error updating message:", error);
     }
   };
+
+  const handleDelete = async (id) => {
+    try {
+    await deleteOnemessage(id)
+    setAnchorEl(null)
+    setSelectedMessage(null)
+    } catch(e){
+      console.log(e)
+    }
+  }
 
   // Compute message statistics
   const totalMessages = messages.length;
@@ -225,6 +246,23 @@ const Messages = () => {
                       <MailOutlineIcon color={msg.responded ? "success" : "error"} />
                     </ListItemIcon>
                     <ListItemText primary={msg.name} secondary={new Date(msg.created_at).toLocaleString()} />
+                    <Box>
+                    <MoreVertIcon onClick={handleClick}/>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          'aria-labelledby': 'basic-button',
+                        }}
+                      >
+                        <MenuItem onClick={markAsResponded}>Mark as Responded</MenuItem>
+                        <MenuItem onClick={() => handleReply(msg.email)}>Reply</MenuItem>
+                        <Divider />
+                        <MenuItem onClick={() => handleDelete(msg.id)}>Delete</MenuItem>
+                      </Menu>
+                    </Box>
                   </ListItem>
                 ))}
               </List>
@@ -250,40 +288,6 @@ const Messages = () => {
         </Typography>
 
         {/* Buttons Section */}
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 20,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "95%",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          {/* "Mark as Responded" Button */}
-          <Button
-            variant="contained"
-            startIcon={<CheckIcon />}
-            onClick={markAsResponded}
-            disabled={selectedMessage.responded}
-            fullWidth
-            sx={{ mr: 1 }}
-          >
-            {selectedMessage.responded ? "Responded" : "Mark as Responded"}
-          </Button>
-
-          {/* "Reply" Button */}
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<SendIcon />}
-            fullWidth
-            onClick={() => handleReply(selectedMessage.email)}
-          >
-            Reply
-          </Button>
-        </Box>
       </>
     ) : (
       <Typography variant="subtitle2" color="gray">

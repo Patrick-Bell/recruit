@@ -62,6 +62,10 @@ const LatestRoles = () => {
         navigate(`/jobs/${id}`)
         window.scrollTo({top:0})
     }
+
+    if (jobs.length === 0) {
+        return ""
+    }
     
     return (
         <Box id='latest-roles' sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" }}>

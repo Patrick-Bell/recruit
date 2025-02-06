@@ -7,6 +7,14 @@ export const getCandidates = async () => {
     return response.data
 }
 
+export const deleteOneCandidate = async (id) => {
+    const response = await axios.delete(`/api/candidates/${id}`, { withCredentials:true })
+    console.log('deleteing')
+    return response.data
+}
+
+
+
 export const readMessage = async (id) => {
     const response = await axios.put(`/api/candidates/${id}`, { added_to_system: true }, { withCredentials: true })
     return response.data

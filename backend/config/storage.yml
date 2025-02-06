@@ -7,12 +7,20 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 development:
-  service: Disk
-  root: <%= Rails.root.join("storage") %>
+  service: cloudinary
 
 production:
-  service: Disk
-  root: <%= Rails.root.join("storage") %>
+  service: cloudinary
+
+cloudinary:
+  service: Cloudinary
+  cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
+  api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
+  api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
+
+
+
+
 
 
 

@@ -15,3 +15,8 @@ export const completeMessage = async (id) => {
     const response = await axios.put(`/api/messages/${id}`, { responded: true }, { withCredentials: true })
     return response.data
 }
+
+export const deleteOnemessage = async (id) => {
+    const response = await axios.delete(`/api/messages/${id}`, { withCredentials: true })
+    return response.data
+}
