@@ -16,6 +16,7 @@ const UploadCV = () => {
     email: "",
   });
   const [formErrors, setFormErrors] = useState({}); // Errors for form fields
+  const [fileError, setFileError] = useState()
   const [btn, setBtn] = useState('Submit')
   const [loading, setLoading] = useState(false)
 
@@ -72,17 +73,46 @@ const UploadCV = () => {
     return errors;
   };
 
+  const validateFile = (file) => {
+    const validFileTypes = ["application/pdf"];
+    const maxFileSize = 5 * 1024 * 1024; // 5MB
+  
+    if (!validFileTypes.includes(file.type)) {
+;
+      return "Please upload a valid PDF file.";
+    }
+  
+    if (file.size > maxFileSize) {
+      return "File size must be less than 5MB.";
+    }
+  
+    return null; // No errors
+  };
+
+
+
   const handleSubmit = async () => {
     const errors = validateForm();
+    let isValid = true;
 
     if (!uploadedFile) {
-      setError(true); // Highlight file upload section
-      setTimeout(() => setError(false), 3000); // Remove error after 3 seconds
+      errors.file = "CV is required.";
+      setFileError(true); // Trigger the error state for file upload
+      isValid = false;
+      setTimeout(() => setFileError(false), 3000); // Reset fileError after 3 seconds
+    } else {
+      const fileError = validateFile(uploadedFile);
+      if (fileError) {
+        errors.file = fileError;
+        setFileError(true); // Set the error state for file upload
+        isValid = false;
+        setTimeout(() => setFileError(false), 3000); // Reset fileError after 3 seconds
+      }
     }
 
     if (Object.keys(errors).length > 0 || !uploadedFile) {
       setFormErrors(errors); // Show form validation errors
-      setTimeout(() => setFormErrors({}), 3000)
+      setTimeout(() => setFormErrors({}), 3000); // Clear form errors after 3 seconds
       return;
     }
 
@@ -113,14 +143,14 @@ const UploadCV = () => {
       setLoading(false)
       setBtn('Submit')
 
-    }catch(e) {
+    } catch (e) {
       console.log(e)
     }
 
     // Clear errors and proceed with form submission
     setFormErrors({});
-    
-  };
+};
+
 
   return (
     <ScrollInView direction={'right'}>
@@ -179,7 +209,7 @@ const UploadCV = () => {
           {!uploadedFile ? (
           <Box
             sx={{
-              border: error
+              border: fileError
                 ? "4px dotted red"
                 : dragOver
                 ? "4px solid #306F53"
@@ -187,7 +217,7 @@ const UploadCV = () => {
               borderRadius: "8px",
               padding: "20px",
               textAlign: "center",
-              backgroundColor: error ? "#ffe6e6" : dragOver ? "#e8f5e9" : "#fff",
+              backgroundColor: fileError ? "#ffe6e6" : dragOver ? "#e8f5e9" : "#fff",
               transition: "background-color 0.3s, border 0.3s",
             }}
             onDragOver={handleDragOver}
@@ -197,7 +227,7 @@ const UploadCV = () => {
             <UploadFileIcon
               sx={{
                 fontSize: "48px",
-                color: error ? "red" : "#408663",
+                color: fileError ? "red" : "#408663",
                 marginBottom: "10px",
                 transition: "color 0.3s",
               }}
@@ -206,7 +236,7 @@ const UploadCV = () => {
               variant="body1"
               sx={{
                 marginBottom: "10px",
-                color: error ? "red" : "#555",
+                color: fileError ? "red" : "#555",
               }}
             >
               Drag & drop your CV here or click to upload
@@ -215,8 +245,8 @@ const UploadCV = () => {
               variant="contained"
               component="label"
               sx={{
-                backgroundColor: error ? "red" : "#408663",
-                ":hover": { backgroundColor: error ? "#cc0000" : "#306F53" },
+                backgroundColor: fileError ? "red" : "#408663",
+                ":hover": { backgroundColor: fileError ? "#cc0000" : "#306F53" },
                 color: "#fff",
                 textTransform: "none",
                 transition: "background-color 0.3s",
@@ -237,10 +267,11 @@ const UploadCV = () => {
           </Box>
           )}
 
+          {fileError && <Typography color="error">Please upload a valid PDF file less than 5MB</Typography>}
 
 
-          
-  
+
+
 
           {/* Submit Button */}
           <Button

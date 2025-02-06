@@ -39,7 +39,7 @@ const Messages = () => {
 
   useEffect(() => {
     fetchMessages();
-  }, [open]);
+  }, [open, selectedMessage]);
 
   const fetchMessages = async () => {
     try {
@@ -65,6 +65,7 @@ const Messages = () => {
 
   const handleReply = (email) => {
     window.location.href = `mailto:${email}`;
+    setAnchorEl(null)
   };
 
   const markAsResponded = async () => {
@@ -84,6 +85,8 @@ const Messages = () => {
       }
     } catch (error) {
       console.error("Error updating message:", error);
+    } finally {
+      setAnchorEl(null)
     }
   };
 
@@ -259,8 +262,6 @@ const Messages = () => {
                       >
                         <MenuItem onClick={markAsResponded}>Mark as Responded</MenuItem>
                         <MenuItem onClick={() => handleReply(msg.email)}>Reply</MenuItem>
-                        <Divider />
-                        <MenuItem onClick={() => handleDelete(msg.id)}>Delete</MenuItem>
                       </Menu>
                     </Box>
                   </ListItem>
@@ -275,9 +276,12 @@ const Messages = () => {
   <Paper sx={{ padding: 3, boxShadow: 2, borderRadius: "10px", position: "relative", }}>
     {selectedMessage ? (
       <>
-        <Typography variant="h5" fontWeight="bold">
-          A New Message...
-        </Typography>
+      <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                <Typography variant="h5" fontWeight="bold">
+                  A New Message...
+                </Typography>
+                <Button onClick={() => handleDelete(selectedMessage?.id)} variant="contained" color="error">Delete</Button>
+                </Box>
         <Typography variant="subtitle1" color="gray">
           From: {selectedMessage.email} | {selectedMessage.name}
         </Typography>

@@ -171,7 +171,7 @@ const DynamicJobPage = () => {
       return;
     }
 
-    ////
+    //
   
     const formDataToSubmit = new FormData();
   

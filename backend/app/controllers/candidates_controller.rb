@@ -19,7 +19,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new(candidate_params)
 
     if @candidate.save
-      CandidateMailer.new_candidate(@candidate).deliver_now
+      SendNewCandidateEmailJob.perform_later(@candidate.id)
       render json: @candidate, status: :created, location: @candidate
     else
       render json: @candidate.errors, status: :unprocessable_entity

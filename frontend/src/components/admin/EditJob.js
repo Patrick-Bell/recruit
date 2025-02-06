@@ -20,6 +20,7 @@ const EditJob = ({ job, onBack, handleSubmit, setActiveTab }) => {
     contract_length: job.contract_length || "",
     job_skills: job.job_skills || [],
     job_benefits: job.job_benefits || [],
+    job_desc: job.job_desc || []
   });
 
   const addSkill = () => {
@@ -55,12 +56,29 @@ const EditJob = ({ job, onBack, handleSubmit, setActiveTab }) => {
   };
 
 
+  const addDesc = () => {
+    setFormData({ ...formData, job_desc: [...formData.job_desc, ""] });
+  };
+
+  // Function to remove a skill field
+  const removeDesc = (index) => {
+    const updatedDesc = formData.job_desc.filter((_, i) => i !== index);
+    setFormData({ ...formData, job_desc: updatedDesc });
+  };
+
+  // Function to handle skill input change
+  const handleDescChange = (index, value) => {
+    const updatedDesc = formData.job_desc.map((skill, i) => i === index ? value : skill);
+    setFormData({ ...formData, job_desc: updatedDesc });
+  }
+
   const submitEdit = (e) => {
     e.preventDefault(); 
     handleSubmit(e, formData); // Now formData is explicitly passed
     toast.success('Success')
   };
   
+  //
   
 
   return (
@@ -298,6 +316,45 @@ const EditJob = ({ job, onBack, handleSubmit, setActiveTab }) => {
             </Grid>
           ))}
         </Grid>
+
+        <Grid item xs={12}>
+            <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between', margin:'10px'}}>
+            <Typography fontFamily={'Poppins'} fontWeight={800}>Description</Typography>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={addDesc}
+                startIcon={<AddIcon />}
+              >
+                Add Paragraph
+              </Button>
+              </Box>
+              <Divider/>
+
+              {formData.job_desc.map((para, index) => (
+                <Grid container spacing={2} key={index}>
+                  <Grid item xs={10} marginTop={'10px'}>
+                    <TextField
+                      label={`Paragraph ${index + 1}`}
+                      variant="outlined"
+                      fullWidth
+                      multiline
+                      rows={3}
+                      value={para}
+                      onChange={(e) => handleDescChange(index, e.target.value)}
+                      sx={{ borderRadius: "10px" }}
+                      InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <RemoveIcon sx={{cursor:'pointer'}} color="error" onClick={() => removeDesc(index)}/>
+                            </InputAdornment>
+                          ),
+                      }}
+                    />
+                  </Grid>
+                </Grid>
+              ))}
+          </Grid>
 
           {/* Submit Button */}
           <Grid item xs={12} fullWidth sx={{ display: "flex",}}>

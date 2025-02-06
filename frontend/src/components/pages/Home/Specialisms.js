@@ -58,7 +58,7 @@ const Specialisms = () => {
   ];
 
   return (
-    <Box id='latest-roles' sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" }}>
+    <Box id='specialisms' sx={{ padding: { xs: 3, sm: 5 }, backgroundColor: "#f9f9f9" }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 {/* Header */}
                 <Underline>

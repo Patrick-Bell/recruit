@@ -189,25 +189,29 @@ const LatestRoles = () => {
                 ))}
             </Swiper>
 
-    <Box sx={{ display: 'flex', justifyContent: 'right', width: '99.8%', marginTop:'10px' }}>
-    {/* Navigation Buttons on the Left */}
-    <Box sx={{ display: 'flex', alignItems: 'right' }}>
-      <Button
-        className="custom-swiper-button-prev"
-        variant="contained"
-        sx={{ color: 'white', marginRight: 1 }}
-      >
-        <ArrowLeftIcon />
-      </Button>
-      <Button
-        className="custom-swiper-button-next"
-        variant="contained"
-        sx={{ color: 'white'}}
-      >
-        <ArrowRightIcon />
-      </Button>
-    </Box>
-    </Box>
+    
+    {jobs.length > 3 && (
+ <Box sx={{ display: 'flex', justifyContent: 'right', width: '99.8%', marginTop:'10px' }}>
+ {/* Navigation Buttons on the Left */}
+ <Box sx={{ display: 'flex', alignItems: 'right' }}>
+   <Button
+     className="custom-swiper-button-prev"
+     variant="contained"
+     sx={{ color: 'white', marginRight: 1 }}
+   >
+     <ArrowLeftIcon />
+   </Button>
+   <Button
+     className="custom-swiper-button-next"
+     variant="contained"
+     sx={{ color: 'white'}}
+   >
+     <ArrowRightIcon />
+   </Button>
+ </Box>
+ </Box>
+    )}
+   
 
         </Box>
     );

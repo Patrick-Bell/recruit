@@ -89,7 +89,9 @@ const JobDescription = ({ job, setValue }) => {
               </Box>
             </Box>
 
-            <Box sx={{ padding: '10px', marginLeft: '20px' }}>
+
+            {job.job_benefits.length > 0 && (
+              <Box sx={{ padding: '10px', marginLeft: '20px' }}>
               <Typography variant="h4" fontFamily="Poppins" fontWeight="600">Benefits</Typography>
               <Box>
                 {job?.job_benefits.map((benefit, i) => (
@@ -101,10 +103,17 @@ const JobDescription = ({ job, setValue }) => {
                   </Box>
                 ))}
               </Box>
-              <Typography sx={{ marginTop: '35px' }}>
-                If you are a passionate <strong>{job?.job_title}</strong> who is excited to work in the {job?.industry} industry, we would love to hear from you!
-              </Typography>
             </Box>
+            )}
+
+              <Box sx={{marginLeft:'20px', padding:'10px'}}>
+              <Typography >
+                If you are a passionate and excited to work in the <strong>{job?.industry}</strong> industry, we would love to hear from you!
+              </Typography>
+              </Box>
+
+          
+            
 
             <Box fullWidth sx={{margin:'20px 10px 0 10px'}}>
             <Button fullWidth onClick={() => handleClick()} variant="contained">Apply</Button>

@@ -58,7 +58,7 @@ const ViewJob = ({ job, onBack }) => {
                     <strong>Posted on:</strong> {new Date(job.created_at).toLocaleDateString()}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-                    <strong>Open for:</strong> <DaysPosted date={(job.created_at)} />
+                    <strong>Open:</strong> <DaysPosted date={(job.created_at)} />
                 </Typography>
                 <Divider sx={{mt:1}}/>
                 <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>

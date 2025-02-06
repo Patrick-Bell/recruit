@@ -36,10 +36,12 @@ const Applicants = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  //
 
   useEffect(() => {
     fetchCandidates();
@@ -73,6 +75,7 @@ const Applicants = () => {
 
   const handleReply = (email) => {
     window.location.href = `mailto:${email}`;
+    setAnchorEl(null)
   };
 
   const markAsResponded = async () => {
@@ -85,9 +88,13 @@ const Applicants = () => {
           candidate.id === selectedCandidate.id ? { ...candidate, added_to_system: true } : candidate
         )
       );
-      setSelectedCandidate({ ...selectedCandidate, added_to_system: true });
+      setAnchorEl(null)
+      setSelectedCandidate(null)
     } catch (error) {
       console.error("Error updating candidate:", error);
+    } finally {
+      setAnchorEl(null)
+      setSelectedCandidate(null)
     }
   };
 
@@ -107,9 +114,10 @@ const Applicants = () => {
     try {
     await deleteOneCandidate(id)
     setAnchorEl(null)
-    setSelectedCandidate(null)
     } catch(e){
       console.log(e)
+    } finally {
+      setSelectedCandidate(null)
     }
   }
 
@@ -249,9 +257,9 @@ const Applicants = () => {
                     </ListItemIcon>
                     <ListItemText primary={candidate.name} secondary={new Date(candidate.created_at).toLocaleString()} />
                     <Box>
-                      <MoreVertIcon onClick={handleClick}/>
-                      <Menu
-                        id="basic-menu"
+                    <MoreVertIcon onClick={handleClick} />
+                    <Menu
+                        id={`basic-menu${candidate.id}`}
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}
@@ -262,8 +270,6 @@ const Applicants = () => {
                         <MenuItem onClick={markAsResponded}>Mark As Added</MenuItem>
                         <MenuItem onClick={() => handleReply(candidate?.email)}>Reply</MenuItem>
                         <MenuItem onClick={() => handleDownload(candidate)}>Download</MenuItem>
-                        <Divider />
-                        <MenuItem onClick={() => handleDelete(candidate?.id)}>Delete</MenuItem>
                       </Menu>
                     </Box>
                   </ListItem>
@@ -278,9 +284,12 @@ const Applicants = () => {
           <Paper sx={{ padding: 3, boxShadow: 2, borderRadius: "10px", position: "relative", maxHeight: '70vh' }}>
             {selectedCandidate ? (
               <>
+              <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
                 <Typography variant="h5" fontWeight="bold">
                   Candidate Details
                 </Typography>
+                <Button onClick={() => handleDelete(selectedCandidate?.id)} variant="contained" color="error">Delete</Button>
+                </Box>
                 <Typography variant="subtitle1" color="gray">
                   From: {selectedCandidate.email} | {selectedCandidate.name}
                 </Typography>
@@ -293,6 +302,9 @@ const Applicants = () => {
                 <iframe style={{width:'100%', height:'400px', borderRadius:'10px', marginBottom:'30px'}} 
                 src={`${selectedCandidate.cv_url.replace("/upload/", "/upload/f_auto,q_auto,w_800/")}.jpg`}>
                 </iframe>
+                
+
+
               </>
             ) : (
               <Typography variant="subtitle2" color="gray">

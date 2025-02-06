@@ -1,5 +1,39 @@
 # db/seeds.rb
 
+Candidate.create!([
+  { name: "Test 1", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 2", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 3", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 4", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 5", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 6", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 7", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 8", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 9", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 1", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 2", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 3", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 4", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 5", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 6", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 7", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 8", email:"test1@gmail.com", phone:"07000000000" },
+  { name: "Test 9", email:"test1@gmail.com", phone:"07000000000" },
+])
+
+Message.create!([
+  { name: "test 1", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test 2", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test 3", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test 4", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test 5", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test 6", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test ", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test 1", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test 91", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+  { name: "test 10", email: "test@gmail.com", message: "tetstestesietsefdfdhdlfd" },
+])
+
 Job.create!([
   {
     job_title: 'Senior Software Engineer',

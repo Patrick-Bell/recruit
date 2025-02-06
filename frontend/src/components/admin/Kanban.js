@@ -103,7 +103,6 @@ const Kanban = ({ job, applicants, setApplicants }) => {
         <Box
           sx={{
             display: "flex",
-            gap: 1,
             p: 0,
             mt: 1,
             overflowX: "auto",
@@ -119,6 +118,7 @@ const Kanban = ({ job, applicants, setApplicants }) => {
                 boxShadow: 2,
                 height: 350,
                 overflow: "scroll",
+                margin:'auto auto'
               }}
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, stage)}
