@@ -39,11 +39,13 @@
     "yup": "^1.6.1"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd ../backend && bundle install && cd ../frontend && npm install && npm run build",
+    "start": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "react-scripts start",
+    "backend": "cd ../backend && bundle exec rails s -b '0.0.0.0' -p 3000"
   },
   "eslintConfig": {
     "extends": [
