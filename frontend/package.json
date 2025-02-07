@@ -9,6 +9,7 @@
     "@mui/material": "^6.2.1",
     "@mui/x-data-grid": "^7.23.6",
     "axios": "^1.7.9",
+    "babel-plugin-macros": "^3.1.0",
     "concurrently": "^7.6.0",
     "cra-template": "1.2.0",
     "formik": "^2.4.6",
