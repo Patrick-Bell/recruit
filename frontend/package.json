@@ -9,6 +9,7 @@
     "@mui/material": "^6.2.1",
     "@mui/x-data-grid": "^7.23.6",
     "axios": "^1.7.9",
+    "concurrently": "^7.6.0",
     "cra-template": "1.2.0",
     "formik": "^2.4.6",
     "framer-motion": "^11.17.0",
@@ -39,13 +40,11 @@
     "yup": "^1.6.1"
   },
   "scripts": {
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "heroku-postbuild": "cd ../backend && bundle install && cd ../frontend && npm install && npm run build",
     "start": "concurrently \"npm run frontend\" \"npm run backend\"",
     "frontend": "react-scripts start",
-    "backend": "cd ../backend && bundle exec rails s -b '0.0.0.0' -p 3000"
+    "backend": "cd ../backend && bundle exec rails s -b '0.0.0.0' -p 3000",
+    "postinstall": "cd backend && RAILS_ENV=production bundle exec rails assets:precompile"
   },
   "eslintConfig": {
     "extends": [
