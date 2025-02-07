@@ -1,5 +1,4 @@
 build:
-  gems:
-    backend:
-      gemfile: backend/Gemfile
-      gemfile_lock: backend/Gemfile.lock
+  ruby:
+    gemfile: backend/Gemfile
+    gemfile_lock: backend/Gemfile.lock
