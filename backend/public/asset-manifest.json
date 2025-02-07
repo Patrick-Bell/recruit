@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.aea9832a.css",
-    "main.js": "/static/js/main.b3e2d1f9.js",
-    "static/js/239.dfdb0d71.chunk.js": "/static/js/239.dfdb0d71.chunk.js",
-    "static/js/213.042bb37f.chunk.js": "/static/js/213.042bb37f.chunk.js",
-    "static/js/455.1221526a.chunk.js": "/static/js/455.1221526a.chunk.js",
-    "static/js/488.7213179a.chunk.js": "/static/js/488.7213179a.chunk.js",
+    "main.js": "/static/js/main.f40e8ffe.js",
+    "static/js/239.7172428c.chunk.js": "/static/js/239.7172428c.chunk.js",
+    "static/js/213.ed9add34.chunk.js": "/static/js/213.ed9add34.chunk.js",
+    "static/js/455.ba08e637.chunk.js": "/static/js/455.ba08e637.chunk.js",
+    "static/js/488.25705746.chunk.js": "/static/js/488.25705746.chunk.js",
     "static/media/dynamic.png": "/static/media/dynamic.edc5e1f4a5e308c2b428.png",
     "static/media/questions.jpg": "/static/media/questions.4a39341089f717ce8a39.jpg",
     "static/media/about-us.jpg": "/static/media/about-us.813c8da299315c8012b5.jpg",
@@ -25,14 +25,14 @@
     "static/media/new-logo-bg.png": "/static/media/new-logo-bg.f3a964a98f940de5142d.png",
     "index.html": "/index.html",
     "main.aea9832a.css.map": "/static/css/main.aea9832a.css.map",
-    "main.b3e2d1f9.js.map": "/static/js/main.b3e2d1f9.js.map",
-    "239.dfdb0d71.chunk.js.map": "/static/js/239.dfdb0d71.chunk.js.map",
-    "213.042bb37f.chunk.js.map": "/static/js/213.042bb37f.chunk.js.map",
-    "455.1221526a.chunk.js.map": "/static/js/455.1221526a.chunk.js.map",
-    "488.7213179a.chunk.js.map": "/static/js/488.7213179a.chunk.js.map"
+    "main.f40e8ffe.js.map": "/static/js/main.f40e8ffe.js.map",
+    "239.7172428c.chunk.js.map": "/static/js/239.7172428c.chunk.js.map",
+    "213.ed9add34.chunk.js.map": "/static/js/213.ed9add34.chunk.js.map",
+    "455.ba08e637.chunk.js.map": "/static/js/455.ba08e637.chunk.js.map",
+    "488.25705746.chunk.js.map": "/static/js/488.25705746.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aea9832a.css",
-    "static/js/main.b3e2d1f9.js"
+    "static/js/main.f40e8ffe.js"
   ]
 }
