@@ -1,4 +1,8 @@
 build:
-  ruby:
-    gemfile: backend/Gemfile
-    gemfile_lock: backend/Gemfile.lock
+  gems:
+    backend:
+      gemfile: backend/Gemfile
+      gemfile_lock: backend/Gemfile.lock
+
+run:
+  web: "cd backend && bundle exec rails s -b '0.0.0.0'"
