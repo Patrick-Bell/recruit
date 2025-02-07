@@ -20,6 +20,9 @@ gem 'jwt'
 gem 'cloudinary'
 gem 'activestorage-cloudinary-service'
 
+gem 'rails_12factor', group: :production
+
+
 
 
 
