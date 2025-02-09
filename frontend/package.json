@@ -68,6 +68,7 @@
   },
   "proxy": "http://localhost:3000",
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "webpack-cli": "^6.0.1"
   }
 }
