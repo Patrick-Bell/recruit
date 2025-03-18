@@ -24,5 +24,14 @@
       credentials: true
   end
 
+  allow do
+    origins 'https://quick-test-be09400107a2.herokuapp.com'  # For production frontend
+
+    resource "*",
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      credentials: true
+  end
+
 
  end
