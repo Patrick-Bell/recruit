@@ -48,11 +48,12 @@ const Home = () => {
           </ScrollInView>
           <ScrollInView direction={'bottom'}>
           <Typography
-            variant="body1"
             sx={{
-              fontSize: "1.1rem",
-              color: "#555",
               textAlign: "justify",
+              textJustify: "inter-word",
+              wordSpacing: "0.05em",
+              fontFamily: "Poppins",
+              lineHeight: 1.8,
             }}
           >
             Our mission is to empower companies with the talent they need to thrive while helping individuals unlock their full career potential. By leveraging a personalized approach and modern recruitment strategies, we aim to make hiring seamless, efficient, and impactful. Whether you're an employer seeking exceptional candidates or a professional in search of the next step in your career, Fiortech is here to bridge the gap.
